@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasse Desenhos - Escola de Desenho Realista</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #0b0b0b; color: #ffffff; margin: 0; padding: 0; line-height: 1.4; }
+        header { background-color: #121212; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222222; }
+        .logo { font-size: 24px; font-weight: bold; letter-spacing: 2px; color: #ffffff; }
+        .logo span { color: #888888; }
+        nav a { color: #aaaaaa; text-decoration: none; margin-left: 20px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+        nav a:hover { color: #ffffff; }
+        .hero { padding: 100px 50px; text-align: center; }
+        .hero h1 { font-size: 48px; margin-bottom: 20px; letter-spacing: 1px; }
+        .hero p { font-size: 18px; color: #888888; max-width: 600px; margin: 0 auto 40px auto; }
+        .btn { background-color: #ffffff; color: #000000; padding: 15px 40px; text-decoration: none; font-weight: bold; text-transform: uppercase; font-size: 14px; display: inline-block; }
+        .section { padding: 80px 50px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 28px; text-align: center; margin-bottom: 60px; text-transform: uppercase; letter-spacing: 2px; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .portfolio-item { background-color: #121212; border: 1px solid #222222; padding: 15px; text-align: center; }
+        .portfolio-item img { width: 100%; height: 350px; object-fit: cover; margin-bottom: 15px; border: 1px solid #333333; }
+        .portfolio-item h3 { font-size: 18px; margin: 10px 0 5px 0; color: #ffffff; }
+        .portfolio-item p { color: #666666; font-size: 14px; margin: 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background-color: #121212; }
+        th, td { padding: 18px; text-align: left; border-bottom: 1px solid #222222; }
+        th { background-color: #161616; font-size: 14px; text-transform: uppercase; color: #ffffff; }
+        td { font-size: 15px; color: #cccccc; }
+        .about-box { background-color: #121212; border: 1px solid #222222; padding: 40px; }
+        footer { text-align: center; padding: 40px; font-size: 13px; color: #555555; border-top: 1px solid #1a1a1a; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">JASSE<span>DESENHOS</span></div>
+        <nav>
+            <a href="#portfolio">Portfólio</a>
+            <a href="#cursos">Cursos</a>
+            <a href="#sobre">Sobre</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>A Arte do Realismo ao Seu Alcance</h1>
+        <p>Aprenda a dominar o grafite e o carvão através de técnicas avançadas de sombreamento e texturas.</p>
+        <a href="#cursos" class="btn">Conhecer a Escola</a>
+    </div>
+
+    <div id="portfolio" class="section">
+        <div class="section-title">Galeria de Realismo</div>
+        <div class="portfolio-grid">
+            
+            <div class="portfolio-item">
+                <img src="1.jpg" alt="Retrato Hiper-realista">
+                <h3>Retrato Hiper-realista</h3>
+                <p>Estudo de poros e texturas de pele.</p>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="2.jpg" alt="O Olhar">
+                <h3>O Olhar</h3>
+                <p>Técnicas de brilho e profundidade na íris.</p>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="3.jpg" alt="Técnicas de Textura Avançada">
+                <h3>Técnicas de Textura Avançada</h3>
+                <p>Jogo de luz e sombra aplicados a texturas.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="cursos" class="section">
+        <div class="section-title">Programa Curricular</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Módulo</th>
+                    <th>Conteúdo Programático</th>
+                    <th>Nível</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Módulo 01</strong></td><td>Introdução aos materiais de desenho.</td><td>Iniciante</td></tr>
+                <tr><td><strong>Módulo 02</strong></td><td>Exercícios de aquecimento das mãos artísticas: Flexibilidade vs precisão.</td><td>Iniciante</td></tr>
+                <tr><td><strong>Módulo 03</strong></td><td>A essência do realismo: Observação e imaginação, atenção e percepção vs interpretação..</td><td>Iniciante</td></tr>
+                <tr><td><strong>Módulo 04</strong></td><td>Conceitos fundamentais do realismo: Luz, Sombra e Volume.</td><td>Iniciante</td></tr>
+                <tr><td><strong>Módulo 05</strong></td><td>Anatomia detalhada e sombreamento de olhos, boca e nariz.</td><td>Intermediário</td></tr>
+                <tr><td><strong>Módulo 06</strong></td><td>Texturas complexas: poros da pele, barba e rugas.</td><td>Avançado</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="sobre" class="section">
+        <div class="section-title">O Artista</div>
+        <div class="about-box">
+            <div class="portfolio-item">
+         <img src="4.png" alt="Retrato Hiper-realista">
+            <h3>Salvador Zacarias Jasse</h3>
+            <p>Artista especializado em desenhos realistas utilizando grafite e carvão, focado no rigor técnico e na reprodução precisa de retratos e detalhes marcantes.</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Jasse Desenhos. Todos os direitos reservados.
+    </footer>
+
+</body>
+</html>
