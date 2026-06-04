@@ -4,108 +4,454 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jasse Desenhos - Escola de Desenho Realista</title>
+    <!-- Inclusão de ícones modernos para as Redes Sociais -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Arial', sans-serif; background-color: #0b0b0b; color: #ffffff; margin: 0; padding: 0; line-height: 1.4; }
-        header { background-color: #121212; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222222; }
-        .logo { font-size: 24px; font-weight: bold; letter-spacing: 2px; color: #ffffff; }
-        .logo span { color: #888888; }
-        nav a { color: #aaaaaa; text-decoration: none; margin-left: 20px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
-        nav a:hover { color: #ffffff; }
-        .hero { padding: 100px 50px; text-align: center; }
-        .hero h1 { font-size: 48px; margin-bottom: 20px; letter-spacing: 1px; }
-        .hero p { font-size: 18px; color: #888888; max-width: 600px; margin: 0 auto 40px auto; }
-        .btn { background-color: #ffffff; color: #000000; padding: 15px 40px; text-decoration: none; font-weight: bold; text-transform: uppercase; font-size: 14px; display: inline-block; }
-        .section { padding: 80px 50px; max-width: 1200px; margin: 0 auto; }
-        .section-title { font-size: 28px; text-align: center; margin-bottom: 60px; text-transform: uppercase; letter-spacing: 2px; }
+        /* Paleta de Cores Enriquecida: Vermelhos, Verdes e Azuis */
+        :root {
+            --bg-principal: #0a0c10;       /* Preto asfalto azulado muito profundo */
+            --bg-card: #131720;            /* Cinza azulado escuro para os blocos */
+            --bg-nav: #0e1116;             /* Tom para o cabeçalho */
+            --text-claro: #f3f4f6;         /* Branco fosco acetinado */
+            --text-mutado: #9ca3af;        /* Cinza médio descritivo */
+            
+            /* Tríade de Cores Persuasivas */
+            --acento-azul: #00f3ff;         /* Azul Ciano: Transmite tecnologia, precisão e foco */
+            --acento-vermelho: #ff4a5a;     /* Vermelho Rubi: Transmite paixão, urgência e ação */
+            --acento-vermelho-hover: #e03e4d;
+            --acento-verde: #10b981;        /* Verde Esmeralda: Transmite evolução, mestria e sucesso */
+            
+            --borda: #1e2530;              /* Linhas de divisão em harmonia com o fundo */
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-principal); color: var(--text-claro); margin: 0; padding: 0; line-height: 1.6; }
+        
+        /* Cabeçalho Minimalista com Vidro Flutuante e Linha Azul */
+        header { background-color: rgba(14, 17, 22, 0.95); backdrop-filter: blur(10px); padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--acento-azul); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 22px; font-weight: 800; letter-spacing: 3px; color: var(--text-claro); text-decoration: none; }
+        .logo span { color: var(--acento-vermelho); }
+        nav a { color: var(--text-mutado); text-decoration: none; margin-left: 25px; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; transition: color 0.3s ease; }
+        nav a:hover { color: var(--acento-azul); }
+        
+        /* Hero Section com Iluminação de Estúdio */
+        .hero { padding: 140px 50px; text-align: center; background: radial-gradient(circle at center, #142035 0%, var(--bg-principal) 70%); }
+        .hero h1 { font-size: 56px; margin-bottom: 25px; letter-spacing: -0.5px; font-weight: 800; line-height: 1.2; color: var(--text-claro); }
+        .hero h1 span { color: var(--acento-azul); }
+        .hero p { font-size: 20px; color: var(--text-mutado); max-width: 750px; margin: 0 auto 45px auto; font-weight: 300; }
+        
+        /* Botão Vermelho de Alta Conversão */
+        .btn { background-color: var(--acento-vermelho); color: #ffffff; padding: 16px 45px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; display: inline-block; border-radius: 3px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 15px rgba(255, 74, 90, 0.3); border: none; cursor: pointer; }
+        .btn:hover { background-color: var(--acento-azul); color: var(--bg-principal); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 243, 255, 0.4); }
+        
+        .section { padding: 100px 50px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 34px; text-align: center; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
+        .section-title span { color: var(--acento-azul); }
+        .section-subtitle { text-align: center; color: var(--text-mutado); margin-bottom: 65px; font-size: 16px; font-weight: 400; letter-spacing: 0.5px; }
+        
+        /* Grid de Benefícios Metódicos (Verde) */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .feature-card { background-color: var(--bg-card); border: 1px solid var(--borda); padding: 40px 30px; text-align: center; border-radius: 6px; transition: transform 0.3s ease, border-color 0.3s ease; }
+        .feature-card:hover { transform: translateY(-5px); border-color: var(--acento-verde); box-shadow: 0 5px 20px rgba(16, 185, 129, 0.1); }
+        .feature-card h3 { font-size: 19px; margin-bottom: 15px; color: var(--acento-verde); font-weight: 700; }
+        .feature-card p { color: var(--text-mutado); font-size: 14.5px; margin: 0; line-height: 1.6; }
+
+        /* Galeria e Ajuste das Molduras */
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .portfolio-item { background-color: #121212; border: 1px solid #222222; padding: 15px; text-align: center; }
-        .portfolio-item img { width: 100%; height: 350px; object-fit: cover; margin-bottom: 15px; border: 1px solid #333333; }
-        .portfolio-item h3 { font-size: 18px; margin: 10px 0 5px 0; color: #ffffff; }
-        .portfolio-item p { color: #666666; font-size: 14px; margin: 0; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; background-color: #121212; }
-        th, td { padding: 18px; text-align: left; border-bottom: 1px solid #222222; }
-        th { background-color: #161616; font-size: 14px; text-transform: uppercase; color: #ffffff; }
-        td { font-size: 15px; color: #cccccc; }
-        .about-box { background-color: #121212; border: 1px solid #222222; padding: 40px; }
-        footer { text-align: center; padding: 40px; font-size: 13px; color: #555555; border-top: 1px solid #1a1a1a; }
+        .portfolio-item { background-color: var(--bg-card); border: 1px solid var(--borda); padding: 18px; text-align: center; border-radius: 6px; display: flex; flex-direction: column; justify-content: space-between; transition: border-color 0.3s ease; }
+        .portfolio-item:hover { border-color: var(--acento-azul); }
+        .portfolio-item img { width: 100%; height: 350px; object-fit: cover; margin-bottom: 20px; border: 1px solid var(--borda); background-color: #000000; border-radius: 2px; }
+        .portfolio-item h3 { font-size: 18px; margin: 10px 0 8px 0; color: var(--text-claro); font-weight: 700; }
+        .portfolio-item p { color: var(--text-mutado); font-size: 14px; margin: 0 0 10px 0; }
+        
+        /* Ajuste do Bloco de Vídeo e Proporção Retangular (16:9) */
+        .portfolio-item.video-container-block { grid-column: 1 / -1; border: 1px solid rgba(255, 74, 90, 0.4); }
+        .portfolio-item.video-container-block video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; margin-bottom: 20px; border: 1px solid var(--borda); background-color: #000000; border-radius: 4px; }
+        .portfolio-item.video-container-block h3 { color: var(--acento-vermelho); }
+
+        /* Lista de Materiais com Lateral Azul */
+        .materials-container { background-color: var(--bg-card); border: 1px solid var(--borda); padding: 45px; border-radius: 6px; position: relative; overflow: hidden; }
+        .materials-container::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background-color: var(--acento-azul); }
+        .materials-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; list-style: none; padding: 0; }
+        .materials-list li { color: var(--text-claro); font-size: 15px; display: flex; align-items: center; }
+        .materials-list li::before { content: "✓"; color: var(--acento-azul); margin-right: 12px; font-weight: 900; font-size: 16px; }
+
+        /* Painel e Preços dos Cursos */
+        .cursos-modalidade-info { background: linear-gradient(135deg, #111622 0%, #1a2233 100%); border: 1px solid var(--borda); padding: 30px; border-radius: 8px; text-align: center; margin-bottom: 40px; font-size: 18px; border-left: 4px solid var(--acento-verde); }
+        .cursos-modalidade-info strong { color: var(--acento-verde); }
+        .cards-investimento { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .card-preco { background-color: var(--bg-card); border: 1px solid var(--borda); border-radius: 12px; padding: 40px 30px; text-align: center; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .card-preco:hover { transform: translateY(-5px); border-color: var(--acento-azul); box-shadow: 0 10px 25px rgba(0, 243, 255, 0.1); }
+        .card-preco.destacado { border-color: var(--acento-vermelho); }
+        .card-preco h3 { font-size: 22px; margin-top: 0; color: var(--text-claro); }
+        .card-preco .duracao { color: var(--text-mutado); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: block; }
+        .card-preco .valor { font-size: 36px; font-weight: 800; color: var(--acento-azul); margin-bottom: 5px; }
+        .card-preco.destacado .valor { color: var(--acento-vermelho); }
+        .card-preco .periodo { color: var(--text-mutado); font-size: 14px; display: block; margin-bottom: 25px; }
+        
+        /* Tabela Curricular Estilizada */
+        .table-container { overflow-x: auto; margin-top: 25px; border: 1px solid var(--borda); border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); background-color: var(--bg-card); }
+        table { width: 100%; border-collapse: separate; border-spacing: 0; }
+        th, td { padding: 22px 25px; text-align: left; }
+        th { background: linear-gradient(135deg, #111622 0%, #1a2233 100%); font-size: 13px; text-transform: uppercase; color: var(--acento-azul); letter-spacing: 2px; font-weight: 700; border-bottom: 2px solid var(--borda); }
+        th:first-child { border-top-left-radius: 12px; }
+        th:last-child { border-top-right-radius: 12px; }
+        td { font-size: 15px; color: #d1d5db; border-bottom: 1px solid rgba(30, 37, 48, 0.5); transition: all 0.2s ease; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background-color: #1a2130; color: #ffffff; border-bottom-color: rgba(0, 243, 255, 0.2); }
+        tr:hover td:first-child { border-left: 3px solid var(--acento-azul); padding-left: 22px; }
+        
+        /* Distintivos (Badges) */
+        .badge { padding: 6px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 20px; letter-spacing: 1px; display: inline-block; }
+        .badge-iniciante { background-color: rgba(0, 243, 255, 0.1); color: var(--acento-azul); border: 1px solid rgba(0, 243, 255, 0.25); }
+        .badge-intermed { background-color: rgba(16, 185, 129, 0.1); color: var(--acento-verde); border: 1px solid rgba(16, 185, 129, 0.25); }
+        .badge-avancado { background-color: rgba(255, 74, 90, 0.1); color: var(--acento-vermelho); border: 1px solid rgba(255, 74, 90, 0.25); }
+
+        /* Seção de Encomendas */
+        .encomendas-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        .encomendas-texto h3 { font-size: 24px; color: var(--text-claro); margin-top: 0; }
+        .encomendas-texto p { color: var(--text-mutado); font-size: 16px; margin-bottom: 20px; }
+        .temas-list { list-style: none; padding: 0; margin-bottom: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .temas-list li { background-color: #181d26; padding: 12px 20px; border-radius: 6px; border: 1px solid var(--borda); font-weight: 600; font-size: 15px; text-align: center; }
+        .temas-list li i { color: var(--acento-vermelho); margin-right: 8px; }
+        .tabela-precos { width: 100%; background-color: var(--bg-card); border: 1px solid var(--borda); border-radius: 8px; border-collapse: collapse; overflow: hidden; }
+        .tabela-precos th { background-color: #181e29; color: var(--acento-azul); padding: 15px 20px; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; }
+        .tabela-precos td { padding: 15px 20px; border-bottom: 1px solid var(--borda); font-size: 15px; }
+        .tabela-precos tr:last-child td { border-bottom: none; }
+        .tabela-precos .preco-tag { font-weight: 700; color: var(--acento-verde); }
+
+        /* Seção de Redes Sociais com Links Oficiais */
+        .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-top: 30px; }
+        .social-card { background-color: var(--bg-card); border: 1px solid var(--borda); padding: 25px 15px; text-align: center; border-radius: 8px; text-decoration: none; color: var(--text-claro); font-weight: 700; font-size: 15px; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .social-card i { font-size: 32px; }
+        .social-card.facebook:hover { border-color: #1877f2; box-shadow: 0 5px 15px rgba(24, 119, 242, 0.2); color: #1877f2; }
+        .social-card.whatsapp:hover { border-color: #25d366; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2); color: #25d366; }
+        .social-card.youtube:hover { border-color: #ff0000; box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2); color: #ff0000; }
+        .social-card.tiktok:hover { border-color: #00f3ff; box-shadow: 0 5px 15px rgba(0, 243, 255, 0.2); color: #ff4a5a; }
+        .social-card.instagram:hover { border-color: #c13584; box-shadow: 0 5px 15px rgba(193, 53, 132, 0.2); color: #c13584; }
+        
+        /* Sobre o Artista */
+        .about-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 50px; background-color: var(--bg-card); border: 1px solid var(--borda); padding: 50px; border-radius: 6px; align-items: center; }
+        .about-img img { width: 100%; height: auto; border: 1px solid var(--borda); border-radius: 4px; object-fit: cover; }
+        .about-text h3 { font-size: 26px; margin-top: 0; color: var(--text-claro); font-weight: 700; }
+        .about-text h3 span { color: var(--acento-azul); font-size: 14px; text-transform: uppercase; letter-spacing: 2px; display: block; margin-top: 5px; font-weight: 400; }
+        .about-text p { color: #d1d5db; font-size: 16px; line-height: 1.7; margin-bottom: 20px; }
+
+        /* Central de Atendimento */
+        .call-to-action-footer { background: radial-gradient(circle at center, #24141a 0%, var(--bg-principal) 100%); border: 1px solid rgba(255, 74, 90, 0.2); padding: 60px 20px; text-align: center; border-radius: 12px; margin-top: 40px; }
+        .call-to-action-footer h3 { font-size: 28px; margin-bottom: 15px; }
+        .call-to-action-footer p { font-size: 18px; color: var(--text-mutado); margin-bottom: 30px; }
+        .call-to-action-footer .phone-highlight { display: block; font-size: 24px; color: var(--acento-azul); font-weight: 800; margin-top: 15px; letter-spacing: 1px; }
+
+        footer { text-align: center; padding: 50px; font-size: 13px; color: #4b5563; border-top: 1px solid var(--borda); margin-top: 80px; letter-spacing: 1px; }
+        
+        @media (max-width: 900px) { .encomendas-container { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            header { padding: 20px; flex-direction: column; gap: 15px; }
+            nav a { margin: 0 10px; font-size: 12px; }
+            .hero { padding: 90px 20px; }
+            .hero h1 { font-size: 38px; }
+            .about-layout { grid-template-columns: 1fr; text-align: center; padding: 30px; }
+            .section { padding: 60px 20px; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">JASSE<span>DESENHOS</span></div>
+        <a href="#" class="logo">JASSE<span>DESENHOS</span></a>
         <nav>
             <a href="#portfolio">Portfólio</a>
             <a href="#cursos">Cursos</a>
-            <a href="#sobre">Sobre</a>
+            <a href="#encomendas">Encomendas</a>
+            <a href="#plataformas">Plataformas</a>
+            <a href="#sobre">O Artista</a>
         </nav>
     </header>
 
     <div class="hero">
-        <h1>A Arte do Realismo ao Seu Alcance</h1>
-        <p>Aprenda a dominar o grafite e o carvão através de técnicas avançadas de sombreamento e texturas.</p>
-        <a href="#cursos" class="btn">Conhecer a Escola</a>
+        <h1>A Arte do Realismo <span>ao Seu Alcance</span></h1>
+        <p>Desenvolva a sua visão artística e domine o grafite e o carvão através de uma metodologia estruturada, focada no rigor técnico e na percepção realística.</p>
+        <a href="#cursos" class="btn">Explorar Conteúdo</a>
     </div>
 
+    <!-- DIFERENCIAIS DA METODOLOGIA -->
+    <div class="section">
+        <div class="section-title">Por que estudar <span>connosco?</span></div>
+        <div class="section-subtitle">Elementos fundamentais do nosso método de ensino técnico</div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Domínio de Texturas</h3>
+                <p>Treinos específicos para simular desde a suavidade da pele até à rugosidade de materiais complexos.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Percepção Visual</h3>
+                <p>Aprenda a enxergar como um artista, separando a interpretação mental da observação pura e real.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Controle de Pressão</h3>
+                <p>Exercícios práticos fundamentais para suavizar gradientes e evitar marcações indesejadas no papel.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PORTFÓLIO COM FORMATO RETANGULAR NO VÍDEO -->
     <div id="portfolio" class="section">
-        <div class="section-title">Galeria de Realismo</div>
+        <div class="section-title">Galeria de <span>Realismo</span></div>
+        <div class="section-subtitle">Estudos artísticos e registros de processos técnicos</div>
         <div class="portfolio-grid">
             
             <div class="portfolio-item">
                 <img src="1.jpg" alt="Retrato Hiper-realista">
                 <h3>Retrato Hiper-realista</h3>
-                <p>Estudo de poros e texturas de pele.</p>
+                <p>Estudo de poros e texturas micro-dérmicas na pele.</p>
             </div>
 
             <div class="portfolio-item">
                 <img src="2.jpg" alt="O Olhar">
                 <h3>O Olhar</h3>
-                <p>Técnicas de brilho e profundidade na íris.</p>
+                <p>Técnicas de alto contraste, brilho e profundidade na íris.</p>
             </div>
 
             <div class="portfolio-item">
                 <img src="3.jpg" alt="Técnicas de Textura Avançada">
-                <h3>Técnicas de Textura Avançada</h3>
-                <p>Jogo de luz e sombra aplicados a texturas.</p>
+                <h3>Textura Avançada</h3>
+                <p>Jogo coordenado de luz e sombra aplicados a volumes complexos.</p>
             </div>
 
-            <div class="portfolio-item">
-                <video src="5.mp4" alt="Prêmio">
+            <div class="portfolio-item video-container-block">
+                <video controls preload="metadata" playsinline muted loop>
+                    <source src="5.mp4" type="video/mp4">
+                    O seu navegador não suporta a reprodução de vídeos MP4.
+                </video>
                 <h3>Prêmio Jovem Criativo</h3>
-                <p>Jogo de luz e sombra aplicados a texturas.</p>
+                <p>Registro audiovisual demonstrando o processo de criação passo a passo.</p>
             </div>
 
         </div>
     </div>
 
+    <!-- SEÇÃO DE CURSOS, INVESTIMENTOS E MODALIDADES -->
     <div id="cursos" class="section">
-        <div class="section-title">Programa Curricular</div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Módulo</th>
-                    <th>Conteúdo Programático</th>
-                    <th>Nível</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>Módulo 01</strong></td><td>Introdução aos materiais de desenho.</td><td>Iniciante</td></tr>
-                <tr><td><strong>Módulo 02</strong></td><td>Exercícios de aquecimento das mãos artísticas: Flexibilidade vs precisão.</td><td>Iniciante</td></tr>
-                <tr><td><strong>Módulo 03</strong></td><td>A essência do realismo: Observação e imaginação, atenção e percepção vs interpretação..</td><td>Iniciante</td></tr>
-                <tr><td><strong>Módulo 04</strong></td><td>Conceitos fundamentais do realismo: Luz, Sombra e Volume.</td><td>Iniciante</td></tr>
-                <tr><td><strong>Módulo 05</strong></td><td>Anatomia detalhada e sombreamento de olhos, boca e nariz.</td><td>Intermediário</td></tr>
-                <tr><td><strong>Módulo 06</strong></td><td>Texturas complexas: poros da pele, barba e rugas.</td><td>Avançado</td></tr>
-            </tbody>
-        </table>
+        <div class="section-title">Nossos <span>Cursos</span></div>
+        <div class="section-subtitle">Formação técnica estruturada e adaptada ao seu ritmo</div>
+        
+        <div class="cursos-modalidade-info">
+            Todos os nossos níveis são ministrados na modalidade <strong>Híbrida (Online e Presencial)</strong>, aliando flexibilidade digital com acompanhamento prático.
+        </div>
+
+        <div class="cards-investimento">
+            <div class="card-preco">
+                <h3>Nível Iniciante</h3>
+                <span class="duracao">Duração: 3 Meses</span>
+                <div class="valor">850 MT</div>
+                <span class="periodo">por mês</span>
+                <span class="badge badge-iniciante">Módulos 01 a 04</span>
+            </div>
+            
+            <div class="card-preco destacado">
+                <h3>Nível Intermediário</h3>
+                <span class="duracao">Duração: 3 Meses</span>
+                <div class="valor">850 MT</div>
+                <span class="periodo">por mês</span>
+                <span class="badge badge-intermed">Módulos 05 a 07</span>
+            </div>
+            
+            <div class="card-preco">
+                <h3>Nível Avançado</h3>
+                <span class="duracao">Duração: 3 Meses</span>
+                <div class="valor">850 MT</div>
+                <span class="periodo">por mês</span>
+                <span class="badge badge-avancado">Módulos 08 a 10</span>
+            </div>
+        </div>
+
+        <div class="section-title" style="font-size: 24px; margin-top: 60px;">Programa <span>Curricular Detalhado</span></div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Módulo</th>
+                        <th>Conteúdo Programático Detalhado</th>
+                        <th>Nível</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Módulo 01</strong></td>
+                        <td>Introdução aos materiais de desenho: Escolha de papéis, graduações de grafite e ferramentas de esbatimento.</td>
+                        <td><span class="badge badge-iniciante">Iniciante</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Módulo 02</strong></td>
+                        <td>Exercícios de aquecimento das mãos artísticas: Coordenação motora, flexibilidade vs precisão no traço inicial.</td>
+                        <td><span class="badge badge-iniciante">Iniciante</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Módulo 03</strong></td>
+                        <td>A essência do realismo: Observação analítica e imaginação, atenção e percepção vs interpretação conceitual.</td>
+                        <td><span class="badge badge-iniciante">Iniciante</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Módulo 04</strong></td>
+                        <td>Conceitos fundamentais do realismo: Luz, Sombra, Projeção de Penumbra e criação de Volume tridimensional.</td>
+                        <td><span class="badge badge-iniciante">Iniciante</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Módulo 05</strong></td>
+                        <td>Mapeamento Facial e Proporções: Uso do método de decalcagem, Grid ou desenho livre para estruturação do retrato.</td>
+                        <td><span class="badge badge-intermed">Intermediário</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Módulo 06</strong></td>
+                        <td>Anatomia detalhada e sombreamento orgânico: Estruturação técnica de olhos, boca, nariz e texturas labiais.</td>
+                        <td><span class="badge badge-intermed">Intermediário</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Módulo 07</strong></td>
+                        <td>Renderização de Elementos Complexos: Técnicas de sombreamento para cabelos lisos e crespos, fios soltos e barbas.</td>
+                        <td><span class="badge badge-intermed">Intermediário</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Módulo 08</strong></td>
+                        <td>Texturas micro-dérmicas avançadas: Execução de poros da pele com lapiseira mecânica, rugas, marcas de expressão e brilho suado.</td>
+                        <td><span class="badge badge-avancado">Avançado</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Módulo 09</strong></td>
+                        <td>Desenho de Elementos Não-Orgânicos: Jogo de luz e reflexos aplicados a texturas metálicas, vidros, tecidos e cenários arquitetónicos.</td>
+                        <td><span class="badge badge-avancado">Avançado</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Módulo 10</strong></td>
+                        <td>Projeto Final de Portfólio: Execução completa de um retrato hiper-realista em grande formato utilizando técnica mista.</td>
+                        <td><span class="badge badge-avancado">Avançado</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
+    <!-- SEÇÃO DE ENCOMENDAS -->
+    <div id="encomendas" class="section">
+        <div class="section-title">Encomendas de <span>Retratos</span></div>
+        <div class="section-subtitle">Eternize os seus momentos mais marcantes com arte realista de alto padrão</div>
+        
+        <div class="encomendas-container">
+            <div class="encomendas-texto">
+                <h3>Arte sob Medida</h3>
+                <p>Produção de retratos artísticos feitos à mão com máxima atenção aos detalhes. Uma opção exclusiva e sofisticada para presentear ou decorar as suas salas e escritórios.</p>
+                <p>Especialidade artística em registrar temas sensíveis e de grande valor emocional:</p>
+                <ul class="temas-list">
+                    <li><i class="fa-solid fa-heart"></i> Casamentos</li>
+                    <li><i class="fa-solid fa-cake-candles"></i> Aniversários</li>
+                    <li><i class="fa-solid fa-baby"></i> Bebés</li>
+                    <li><i class="fa-solid fa-child-baby-bliss"></i> Recém-nascidos</li>
+                </ul>
+                <p>Todas as artes são produzidas com materiais importados de alta durabilidade para garantir a conservação do desenho por décadas.</p>
+            </div>
+            <div>
+                <table class="tabela-precos">
+                    <thead>
+                        <tr>
+                            <th>Dimensão / Formato</th>
+                            <th>Preço do Investimento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Tamanho A4</strong></td>
+                            <td class="preco-tag">1 500 MT</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tamanho A3</strong></td>
+                            <td class="preco-tag">3 000 MT</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tamanho A2</strong></td>
+                            <td class="preco-tag">5 500 MT</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tamanho A1</strong></td>
+                            <td class="preco-tag">12 000 MT</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tamanho A0</strong></td>
+                            <td class="preco-tag">20 000 MT</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- GUIA DE MATERIAIS RECOMENDADOS -->
+    <div id="materiais" class="section">
+        <div class="section-title">Materiais <span>Essenciais</span></div>
+        <div class="section-subtitle">O instrumental básico recomendado para o acompanhamento das aulas</div>
+        <div class="materials-container">
+            <ul class="materials-list">
+                <li>Lápis de Grafite (Graduações H, HB, 2B, 4B, 6B)</li>
+                <li>Lapiseiras Técnicas (0.3 e 0.5 mm)</li>
+                <li>Carvão Vegetal Natural e em Lápis</li>
+                <li>Esfuminhos de Papel (Tamanhos variados)</li>
+                <li>Borracha Limpa-Tipos (Maleável)</li>
+                <li>Papel Técnico de Alta Gramatura (Mínimo 200g/m²)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SEÇÃO DE PLATAFORMAS COM SEUS LINKS OFICIAIS -->
+    <div id="plataformas" class="section">
+        <div class="section-title">Nossas <span>Plataformas</span></div>
+        <div class="section-subtitle">Acompanhe os bastidores, tutoriais rápidos e novos lançamentos artísticos</div>
+        
+        <div class="social-grid">
+            <a href="https://web.facebook.com/share/g/1Jo5nh8VDs/" target="_blank" class="social-card facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+                <span>Facebook</span>
+            </a>
+            <a href="https://wa.me/258860069019" target="_blank" class="social-card whatsapp">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="https://youtube.com/channel/UCSjqeWM5asALyKCYNJ8zB8w" target="_blank" class="social-card youtube">
+                <i class="fa-brands fa-youtube"></i>
+                <span>YouTube</span>
+            </a>
+            <a href="https://tiktok.com" target="_blank" class="social-card tiktok">
+                <i class="fa-brands fa-tiktok"></i>
+                <span>TikTok</span>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="social-card instagram">
+                <i class="fa-brands fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- SOBRE O ARTISTA -->
     <div id="sobre" class="section">
-        <div class="section-title">O Artista</div>
-        <div class="about-box">
-            <div class="portfolio-item">
-         <img src="4.jpg" alt="Retrato Hiper-realista">
-            <h3>Salvador Zacarias Jasse</h3>
-            <p>Artista especializado em desenhos realistas utilizando grafite e carvão, focado no rigor técnico e na reprodução precisa de retratos e detalhes marcantes.</p>
+        <div class="section-title">O <span>Artista</span></div>
+        <div class="section-subtitle">Conheça o orientador por trás da metodologia de ensino</div>
+        <div class="about-layout">
+            <div class="about-img">
+                <img src="4.jpg" alt="Salvador Zacarias Jasse">
+            </div>
+            <div class="about-text">
+                <h3>Salvador Zacarias Jasse <span>Artista Visual & Educador</span></h3>
+                <p>Artista e educador especializado em artes visuais e desenhos realistas de alto rigor técnico. Através do uso refinado do grafite e do carvão, dedica-se à reprodução precisa de retratos e texturas complexas, convertendo a observação analítica em obras de impacto visual marcante.</p>
+                <p>A sua proposta pedagógica visa desmistificar o desenho realista, provando que a precisão artística não depende de um "dom", mas sim do desenvolvimento estruturado da percepção visual e do domínio correto das ferramentas técnicas.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CENTRAL DE ATENDIMENTO / MATRÍCULAS -->
+    <div class="section">
+        <div class="call-to-action-footer">
+            <h3>Ficou com alguma dúvida?</h3>
+            <p>Fale diretamente connosco para efetuar inscrições nos cursos híbridos ou solicitar orçamentos personalizados de retratos.</p>
+            <a href="https://wa.me/258860069019" target="_blank" class="btn"><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> Enviar Mensagem no WhatsApp</a>
+            <span class="phone-highlight">Contato Direto: +258 860069019</span>
         </div>
     </div>
 
