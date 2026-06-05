@@ -24,6 +24,11 @@
             --borda: #1e2530;              /* Linhas de divisão em harmonia com o fundo */
         }
 
+        /* Configuração de rolagem suave nativa no navegador */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-principal); color: var(--text-claro); margin: 0; padding: 0; line-height: 1.6; }
         
         /* Cabeçalho Minimalista com Vidro Flutuante e Linha Azul */
@@ -39,8 +44,8 @@
         .hero h1 span { color: var(--acento-azul); }
         .hero p { font-size: 20px; color: var(--text-mutado); max-width: 750px; margin: 0 auto 45px auto; font-weight: 300; }
         
-        /* Botão Vermelho de Alta Conversão */
-        .btn { background-color: var(--acento-vermelho); color: #ffffff; padding: 16px 45px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; display: inline-block; border-radius: 3px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 15px rgba(255, 74, 90, 0.3); border: none; cursor: pointer; }
+        /* Botão Vermelho de Alta Conversão Ajustado como Link Estilizado */
+        .btn { background-color: var(--acento-vermelho); color: #ffffff; padding: 16px 45px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; display: inline-block; border-radius: 3px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 15px rgba(255, 74, 90, 0.3); border: none; cursor: pointer; text-align: center; }
         .btn:hover { background-color: var(--acento-azul); color: var(--bg-principal); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 243, 255, 0.4); }
         
         .section { padding: 100px 50px; max-width: 1200px; margin: 0 auto; }
@@ -106,6 +111,11 @@
         .badge-intermed { background-color: rgba(16, 185, 129, 0.1); color: var(--acento-verde); border: 1px solid rgba(16, 185, 129, 0.25); }
         .badge-avancado { background-color: rgba(255, 74, 90, 0.1); color: var(--acento-vermelho); border: 1px solid rgba(255, 74, 90, 0.25); }
 
+        /* Estilização da Área do Formulário Oculto por Padrão */
+        .form-section { background-color: var(--bg-card); border: 1px solid var(--borda); padding: 40px 20px; border-radius: 12px; text-align: center; margin-top: 50px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); display: none; }
+        .iframe-container { position: relative; width: 100%; overflow: hidden; display: flex; justify-content: center; }
+        .iframe-container iframe { width: 100%; max-width: 760px; border-radius: 8px; background-color: #ffffff; }
+
         /* Seção de Encomendas */
         .encomendas-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
         .encomendas-texto h3 { font-size: 24px; color: var(--text-claro); margin-top: 0; }
@@ -170,8 +180,9 @@
 
     <div class="hero">
         <h1>A Arte do Realismo <span>ao Seu Alcance</span></h1>
-        <p>Desenvolva a sua criatividade artística e domine o grafite e o carvão através de um guia prático e  estruturado, focada no retrato fiel da realidade e na percepção realística.</p>
-        <a href="#cursos" class="btn"> EXPLORAR</a>
+        <p>Desenvolva a sua criatividade artística e domine o grafite e o carvão através de um guia prático e estruturado, focada no retrato fiel da realidade e na percepção realística.</p>
+        <!-- BOTÃO HERO: Configurado como link + ativação logística de clique simultâneo -->
+        <a href="#inscricao" onclick="activarInscricao()" class="btn">INSCREVER-SE AO CURSO</a>
     </div>
 
     <!-- METODOLOGIA -->
@@ -184,7 +195,7 @@
                 <p>Treinos específicos para simular desde a suavidade da pele até à rugosidade de materiais complexos.</p>
             </div>
             <div class="feature-card">
-                <h3>Domine o desenho como um mestrel</h3>
+                <h3>Domine o desenho como um mestre!</h3>
                 <p>Aprenda a enxergar como um artista, separando a interpretação mental da observação pura e real.</p>
             </div>
             <div class="feature-card">
@@ -293,7 +304,7 @@
                     </tr>
                     <tr>
                         <td><strong>Módulo 04</strong></td>
-                        <td>Conceitos fundamentais do realismo: Luz, Sombra, Volume ecProfundidade.</td>
+                        <td>Conceitos fundamentais do realismo: Luz, Sombra, Volume e Profundidade.</td>
                         <td><span class="badge badge-iniciante">Iniciante</span></td>
                     </tr>
                     <tr>
@@ -328,6 +339,11 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <!-- BOTÃO CURRICULAR: Link direto + ativação logística simultânea -->
+            <a href="#inscricao" onclick="activarInscricao()" class="btn">Inscrever-se ao curso</a>
         </div>
     </div>
 
@@ -429,6 +445,15 @@
         </div>
     </div>
 
+    <!-- SEÇÃO DO FORMULÁRIO POSICIONADA ANTES DE "SOBRE O ARTISTA" -->
+    <div id="inscricao" class="form-section">
+        <div class="section-title" style="font-size: 26px;">Ficha de <span>Inscrição Oficial</span></div>
+        <div class="section-subtitle" style="margin-bottom: 30px;">Preencha os dados abaixo para concluir o seu registo.</div>
+        <div class="iframe-container" id="container-do-formulario">
+            <!-- O iframe do Google Forms será injetado dinamicamente aqui via Javascript -->
+        </div>
+    </div>
+
     <!-- SOBRE O ARTISTA -->
     <div id="sobre" class="section">
         <div class="section-title">O <span>Artista</span></div>
@@ -440,7 +465,7 @@
             <div class="about-text">
                 <h3>Salvador Zacarias Jasse <span>Artista Visual & Professor</span></h3>
                 <p>Artista e educador especializado em artes visuais e desenhos realistas de alto rigor técnico. Através do uso refinado do grafite e do carvão, dedica-se à reprodução precisa de retratos e texturas complexas, convertendo a observação analítica em obras de impacto visual marcante.</p>
-                <p>A sua proposta pedagógica visa desmistificar o desenho realista, provando que a precisão artística não depende de um "dom", mas sim do desenvolvimento estruturado da percepção visual e do domínio correto das ferramentas técnicas.</p>
+                <p>A sua proposta pedagógica visa desmystificar o desenho realista, provando que a precisão artística não depende de um "dom", mas sim do desenvolvimento estruturado da percepção visual e do domínio correto das ferramentas técnicas.</p>
             </div>
         </div>
     </div>
@@ -458,6 +483,27 @@
     <footer>
         &copy; 2026 Jasse Desenhos. Todos os direitos reservados.
     </footer>
+
+    <!-- SCRIPT INFALÍVEL CORRIGIDO COM MULTICAMADA DE EXECUÇÃO -->
+    <script>
+        function activarInscricao() {
+            var seccaoForm = document.getElementById("inscricao");
+            var container = document.getElementById("container-do-formulario");
+
+            // 1. Injeta com segurança absoluta o iframe fornecido se a div estiver vazia
+            if (!container.innerHTML.trim()) {
+                container.innerHTML = '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdrVdynkMPLoX__JAyK1aVXrvYCZIWAt3GfcfgsGi1-X_iDuQ/viewform?embedded=true" width="640" height="3006" frameborder="0" marginheight="0" marginwidth="0">A carregar…</iframe>';
+            }
+
+            // 2. Revela a secção removendo o 'display: none'
+            seccaoForm.style.display = "block";
+
+            // 3. Mini atraso de segurança para forçar o scroll após renderização completa
+            setTimeout(function() {
+                seccaoForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 50);
+        }
+    </script>
 
 </body>
 </html>
