@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jasse Desenhos - Escola de Desenho Realista</title>
-    <!-- Inclusão de ícones modernos para as Redes Sociais -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Paleta de Cores Enriquecida: Vermelhos, Verdes e Azuis */
@@ -24,7 +23,7 @@
             --borda: #1e2530;              /* Linhas de divisão em harmonia com o fundo */
         }
 
-        /* Configuração de rolagem suave nativa no navegador */
+        /* Rolagem suave nativa */
         html {
             scroll-behavior: smooth;
         }
@@ -44,7 +43,7 @@
         .hero h1 span { color: var(--acento-azul); }
         .hero p { font-size: 20px; color: var(--text-mutado); max-width: 750px; margin: 0 auto 45px auto; font-weight: 300; }
         
-        /* Botão Vermelho de Alta Conversão Ajustado como Link Estilizado */
+        /* Botão Vermelho de Alta Conversão Ajustado como Link Linkado */
         .btn { background-color: var(--acento-vermelho); color: #ffffff; padding: 16px 45px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; display: inline-block; border-radius: 3px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 15px rgba(255, 74, 90, 0.3); border: none; cursor: pointer; text-align: center; }
         .btn:hover { background-color: var(--acento-azul); color: var(--bg-principal); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 243, 255, 0.4); }
         
@@ -88,7 +87,7 @@
         .card-preco:hover { transform: translateY(-5px); border-color: var(--acento-azul); box-shadow: 0 10px 25px rgba(0, 243, 255, 0.1); }
         .card-preco.destacado { border-color: var(--acento-vermelho); }
         .card-preco h3 { font-size: 22px; margin-top: 0; color: var(--text-claro); }
-        .card-preco .duracao { color: var(--text-mutado); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: block; }
+        .card-preco .duracao { color: var(--text-mutado); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: block; margin-top: 5px; }
         .card-preco .valor { font-size: 36px; font-weight: 800; color: var(--acento-azul); margin-bottom: 5px; }
         .card-preco.destacado .valor { color: var(--acento-vermelho); }
         .card-preco .periodo { color: var(--text-mutado); font-size: 14px; display: block; margin-bottom: 25px; }
@@ -111,7 +110,7 @@
         .badge-intermed { background-color: rgba(16, 185, 129, 0.1); color: var(--acento-verde); border: 1px solid rgba(16, 185, 129, 0.25); }
         .badge-avancado { background-color: rgba(255, 74, 90, 0.1); color: var(--acento-vermelho); border: 1px solid rgba(255, 74, 90, 0.25); }
 
-        /* Estilização da Área do Formulário Oculto por Padrão */
+        /* Estilização da Área do Formulário Oculto */
         .form-section { background-color: var(--bg-card); border: 1px solid var(--borda); padding: 40px 20px; border-radius: 12px; text-align: center; margin-top: 50px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); display: none; }
         .iframe-container { position: relative; width: 100%; overflow: hidden; display: flex; justify-content: center; }
         .iframe-container iframe { width: 100%; max-width: 760px; border-radius: 8px; background-color: #ffffff; }
@@ -181,11 +180,9 @@
     <div class="hero">
         <h1>A Arte do Realismo <span>ao Seu Alcance</span></h1>
         <p>Desenvolva a sua criatividade artística e domine o grafite e o carvão através de um guia prático e estruturado, focada no retrato fiel da realidade e na percepção realística.</p>
-        <!-- BOTÃO HERO: Configurado como link + ativação logística de clique simultâneo -->
-        <a href="#inscricao" onclick="activarInscricao()" class="btn">INSCREVER-SE AO CURSO</a>
+        <a href="#inscricao" onclick="exibirFormulario()" class="btn">INSCREVER-SE AO CURSO</a>
     </div>
 
-    <!-- METODOLOGIA -->
     <div class="section">
         <div class="section-title">Por que estudar <span>connosco?</span></div>
         <div class="section-subtitle">Elementos fundamentais do nosso método de ensino técnico</div>
@@ -205,7 +202,6 @@
         </div>
     </div>
 
-    <!-- PORTFÓLIO -->
     <div id="portfolio" class="section">
         <div class="section-title">Galeria de <span>Realismo</span></div>
         <div class="section-subtitle">Estudos artísticos e registros de processos técnicos</div>
@@ -241,7 +237,6 @@
         </div>
     </div>
 
-    <!-- NOSSOS CURSOS-->
     <div id="cursos" class="section">
         <div class="section-title">Nossos <span>Cursos</span></div>
         <div class="section-subtitle">Formação técnica estruturada e adaptada ao seu ritmo</div>
@@ -342,12 +337,10 @@
         </div>
 
         <div style="text-align: center; margin-top: 40px;">
-            <!-- BOTÃO CURRICULAR: Link direto + ativação logística simultânea -->
-            <a href="#inscricao" onclick="activarInscricao()" class="btn">Inscrever-se ao curso</a>
+            <a href="#inscricao" onclick="exibirFormulario()" class="btn">Garantir Minha Vaga no Curso</a>
         </div>
     </div>
 
-    <!-- ENCOMENDAS -->
     <div id="encomendas" class="section">
         <div class="section-title">Encomendas de <span>Retratos</span></div>
         <div class="section-subtitle">Eternize os seus momentos mais marcantes com arte realista moderna feito com todo amor e cuidado</div>
@@ -400,7 +393,6 @@
         </div>
     </div>
 
-    <!-- MATERIAIS RECOMENDADOS -->
     <div id="materiais" class="section">
         <div class="section-title">Materiais <span>Essenciais</span></div>
         <div class="section-subtitle">O instrumental básico recomendado para o acompanhamento das aulas</div>
@@ -416,7 +408,6 @@
         </div>
     </div>
 
-    <!-- SEÇÃO DE PLATAFORMAS COM SEUS LINKS OFICIAIS -->
     <div id="plataformas" class="section">
         <div class="section-title">Nossas <span>Plataformas</span></div>
         <div class="section-subtitle">Acompanhe os bastidores, tutoriais rápidos e novos lançamentos artísticos</div>
@@ -445,16 +436,13 @@
         </div>
     </div>
 
-    <!-- SEÇÃO DO FORMULÁRIO POSICIONADA ANTES DE "SOBRE O ARTISTA" -->
-    <div id="inscricao" class="form-section">
-        <div class="section-title" style="font-size: 26px;">Ficha de <span>Inscrição Oficial</span></div>
-        <div class="section-subtitle" style="margin-bottom: 30px;">Preencha os dados abaixo para concluir o seu registo.</div>
-        <div class="iframe-container" id="container-do-formulario">
-            <!-- O iframe do Google Forms será injetado dinamicamente aqui via Javascript -->
-        </div>
+    <div id="inscricao" class="form-section section">
+        <div class="section-title">Ficha de <span>Inscrição Oficial</span></div>
+        <div class="section-subtitle" style="margin-bottom: 30px;">Preencha os dados abaixo para concluir o seu registo nos nossos cursos.</div>
+        <div class="iframe-container" id="iframe-wrapper">
+            </div>
     </div>
 
-    <!-- SOBRE O ARTISTA -->
     <div id="sobre" class="section">
         <div class="section-title">O <span>Artista</span></div>
         <div class="section-subtitle">Conheça o orientador por trás da metodologia de ensino</div>
@@ -465,12 +453,11 @@
             <div class="about-text">
                 <h3>Salvador Zacarias Jasse <span>Artista Visual & Professor</span></h3>
                 <p>Artista e educador especializado em artes visuais e desenhos realistas de alto rigor técnico. Através do uso refinado do grafite e do carvão, dedica-se à reprodução precisa de retratos e texturas complexas, convertendo a observação analítica em obras de impacto visual marcante.</p>
-                <p>A sua proposta pedagógica visa desmystificar o desenho realista, provando que a precisão artística não depende de um "dom", mas sim do desenvolvimento estruturado da percepção visual e do domínio correto das ferramentas técnicas.</p>
+                <p>A sua proposta pedagógica visa desmistificar o desenho realista, provando que a precisão artística não depende de um "dom", mas sim do desenvolvimento estruturado da percepção visual e do domínio correto das ferramentas técnicas.</p>
             </div>
         </div>
     </div>
 
-    <!-- CENTRAL DE ATENDIMENTO / MATRÍCULAS -->
     <div class="section">
         <div class="call-to-action-footer">
             <h3>Qualquer dúvida?</h3>
@@ -484,24 +471,24 @@
         &copy; 2026 Jasse Desenhos. Todos os direitos reservados.
     </footer>
 
-    <!-- SCRIPT INFALÍVEL CORRIGIDO COM MULTICAMADA DE EXECUÇÃO -->
     <script>
-        function activarInscricao() {
-            var seccaoForm = document.getElementById("inscricao");
-            var container = document.getElementById("container-do-formulario");
+        function exibirFormulario() {
+            var seccaoFormulario = document.getElementById("inscricao");
+            var wrapper = document.getElementById("iframe-wrapper");
 
-            // 1. Injeta com segurança absoluta o iframe fornecido se a div estiver vazia
-            if (!container.innerHTML.trim()) {
-                container.innerHTML = '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdrVdynkMPLoX__JAyK1aVXrvYCZIWAt3GfcfgsGi1-X_iDuQ/viewform?embedded=true" width="640" height="3006" frameborder="0" marginheight="0" marginwidth="0">A carregar…</iframe>';
+            // Se o contêiner estiver vazio, injetamos o formulário oficial
+            if (!wrapper.innerHTML.trim()) {
+                // Configurado com largura adaptável (100%) e altura alta (3000) por ter 11 seções
+                wrapper.innerHTML = '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdrVdynkMPLoX__JAyK1aVXrvYCZIWAt3GfcfgsGi1-X_iDuQ/viewform?embedded=true" width="100%" height="3000" frameborder="0" marginheight="0" marginwidth="0">A carregar…</iframe>';
             }
 
-            // 2. Revela a secção removendo o 'display: none'
-            seccaoForm.style.display = "block";
+            // Torna a seção visível na página
+            seccaoFormulario.style.display = "block";
 
-            // 3. Mini atraso de segurança para forçar o scroll após renderização completa
+            // Aguarda um pequeno instante de renderização do browser e faz scroll suave até lá
             setTimeout(function() {
-                seccaoForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 50);
+                seccaoFormulario.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 60);
         }
     </script>
 
