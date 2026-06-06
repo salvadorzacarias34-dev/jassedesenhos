@@ -20,7 +20,7 @@
             --acento-vermelho-hover: #e03e4d;
             --acento-verde: #10b981;        /* Verde Esmeralda: Transmite evolução, mestria e sucesso */
             
-            --borda: #1e2530;              /* Linhas de divisão em harmonia com o fundo */
+            --borda: #1e2530;              /* Linhas de division em harmonia com o fundo */
         }
 
         /* Rolagem suave nativa */
@@ -100,6 +100,163 @@
         .card-preco .valor { font-size: 36px; font-weight: 800; color: var(--acento-azul); margin-bottom: 5px; }
         .card-preco.destacado .valor { color: var(--acento-vermelho); }
         .card-preco .periodo { color: var(--text-mutado); font-size: 14px; display: block; margin-bottom: 25px; }
+
+        /* ========================================================
+           NOVO LAYOUT: ABAS VERTICAIS + CARROSSEL DINÂMICO (ESTILO LAVESO)
+           ======================================================== */
+        .grade-programa-dinamico {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 40px;
+            margin-top: 40px;
+            align-items: start;
+        }
+
+        /* Menu Lateral de Abas */
+        .abas-menu-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .aba-botao {
+            background-color: var(--bg-card);
+            border: 1px solid var(--borda);
+            color: var(--text-mutado);
+            padding: 18px 24px;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .aba-botao:hover {
+            color: var(--text-claro);
+            border-color: rgba(0, 243, 255, 0.4);
+            background-color: #171e2a;
+        }
+
+        .aba-botao.ativa {
+            color: #ffffff;
+            background: linear-gradient(135deg, #131a26 0%, #1b2536 100%);
+            border-color: var(--borda);
+            border-left: 4px solid var(--acento-vermelho);
+            box-shadow: 0 4px 15px rgba(255, 74, 90, 0.1);
+        }
+
+        /* Painéis de Conteúdo com Animação Smooth */
+        .conteudo-aba-painel {
+            display: none;
+            animation: fadeInSuave 0.5s ease forwards;
+        }
+
+        .conteudo-aba-painel.ativo {
+            display: block;
+        }
+
+        @keyframes fadeInSuave {
+            from { opacity: 0; transform: translateX(15px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Estrutura do Recipiente do Carrossel */
+        .carrossel-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background-color: #0d1117;
+            padding: 30px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--borda);
+            overflow: hidden;
+        }
+
+        .carrossel-trilho {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Oculta a barra no Firefox */
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        .carrossel-trilho::-webkit-scrollbar {
+            display: none; /* Oculta a barra no Chrome/Safari */
+        }
+
+        /* Molduras das Capas com Efeito Cinematográfico Charles Laveso */
+        .capa-modulo-card {
+            min-width: 200px;
+            max-width: 200px;
+            height: 300px;
+            background-color: #000;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--borda);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .capa-modulo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        /* EFITO CENTRAL DA SOLICITAÇÃO: Desfoca os vizinhos e destaca o focado ao passar o rato */
+        .carrossel-trilho:hover .capa-modulo-card {
+            opacity: 0.35;
+            transform: scale(0.95);
+            filter: blur(1px);
+        }
+
+        .carrossel-trilho .capa-modulo-card:hover {
+            opacity: 1;
+            transform: scale(1.06);
+            filter: blur(0);
+            border-color: var(--acento-azul);
+            box-shadow: 0 10px 25px rgba(0, 243, 255, 0.35);
+        }
+
+        .carrossel-trilho .capa-modulo-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Botões Flutuantes de Navegação Lateral */
+        .seta-carrossel {
+            position: absolute;
+            background-color: rgba(19, 23, 32, 0.9);
+            border: 1px solid var(--borda);
+            color: var(--text-claro);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .seta-carrossel:hover {
+            background-color: var(--acento-vermelho);
+            color: #ffffff;
+            border-color: var(--acento-vermelho);
+            transform: scale(1.1);
+        }
+
+        .seta-esquerda { left: 15px; }
+        .seta-direita { right: 15px; }
         
         /* Tabela Curricular Estilizada */
         .table-container { overflow-x: auto; margin-top: 25px; border: 1px solid var(--borda); border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); background-color: var(--bg-card); }
@@ -180,6 +337,12 @@
 
         footer { text-align: center; padding: 50px; font-size: 13px; color: #4b5563; border-top: 1px solid var(--borda); margin-top: 80px; letter-spacing: 1px; }
         
+        @media (max-width: 992px) { 
+            .grade-programa-dinamico { grid-template-columns: 1fr; } 
+            .abas-menu-vertical { flex-direction: row; overflow-x: auto; padding-bottom: 10px; }
+            .aba-botao { white-space: nowrap; border-left: none; border-bottom: 4px solid transparent; }
+            .aba-botao.ativa { border-left: none; border-bottom: 4px solid var(--acento-vermelho); }
+        }
         @media (max-width: 900px) { .encomendas-container { grid-template-columns: 1fr; } }
         @media (max-width: 768px) {
             header { padding: 20px; flex-direction: column; gap: 15px; }
@@ -197,14 +360,15 @@
 
     <header>
         <a href="#" class="logo">JASSE<span>DESENHOS</span></a>
-       <nav>
-    <a href="#portfolio">Portfólio</a>
-    <a href="#cursos">Cursos</a>
-    <a href="#encomendas">Encomendas</a>
-    <a href="#plataformas">Plataformas</a>
-    <a href="#sobre">O Artista</a>
-    <a href="alunos.html" target="_blank" style="color: var(--acento-azul); font-weight: 700;">Área de Alunos <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px;"></i></a>
-</nav>
+        <nav>
+            <a href="#portfolio">Portfólio</a>
+            <a href="#cursos">Cursos</a>
+            <a href="#encomendas">Encomendas</a>
+            <a href="#plataformas">Plataformas</a>
+            <a href="#sobre">O Artista</a>
+            <div id="user-status-area" class="auth-status-container"></div>
+            <a href="alunos.html" target="_blank" style="color: var(--acento-azul); font-weight: 700;">Área de Alunos <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 10px;"></i></a>
+        </nav>
     </header>
 
     <div class="hero">
@@ -294,31 +458,68 @@
             </div>
         </div>
 
-        <div class="section-title" style="font-size: 24px; margin-top: 60px;">Programa <span>Curricular Detalhado</span></div>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Módulo</th>
-                        <th>Conteúdos programados</th>
-                        <th>Nível</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td><strong>Módulo 01</strong></td><td>Introdução aos materiais de desenho: Escolha de papéis, graduações de grafite e ferramentas de esbatimento.</td><td><span class="badge badge-iniciante">Iniciante</span></td></tr>
-                    <tr><td><strong>Módulo 02</strong></td><td>Exercícios de aquecimento das mãos artísticas: Coordenação motora, flexibilidade vs precisão no traço inicial.</td><td><span class="badge badge-iniciante">Iniciante</span></td></tr>
-                    <tr><td><strong>Módulo 03</strong></td><td>A essência do realismo: Observação e imaginação, atenção e percepção vs interpretação conceitual.</td><td><span class="badge badge-iniciante">Iniciante</span></td></tr>
-                    <tr><td><strong>Módulo 04</strong></td><td>Conceitos fundamentais do realismo: Luz, Sombra, Volume e Profundidade.</td><td><span class="badge badge-iniciante">Iniciante</span></td></tr>
-                    <tr><td><strong>Módulo 05</strong></td><td>Enquadramento e Proporções: Uso da grelha e espaçamento das formas no desenho.</td><td><span class="badge badge-intermed">Intermediário</span></td></tr>
-                    <tr><td><strong>Módulo 06</strong></td><td>Sombreamento de pelo: Desenho de olhos, nariz boca, orelhas e maçã do rosto.</td><td><span class="badge badge-intermed">Intermediário</span></td></tr>
-                    <tr><td><strong>Módulo 07</strong></td><td>Cabelos e pêlos: Técnicas de sombreamento para cabelos lisos e crespos, fios soltos e barbas.</td><td><span class="badge badge-intermed">Intermediário</span></td></tr>
-                    <tr><td><strong>Módulo 08</strong></td><td>Texturas avançadas: Poros da pele, rugas, marcas de expressão e brilho suado ou pele oleosa.</td><td><span class="badge badge-avancado">Avançado</span></td></tr>
-                    <tr><td><strong>Módulo 09</strong></td><td>Desenho de Elementos Não-Orgânicos: Jogo de luz e reflexos aplicados a texturas metálicas, vidros, tecidos e cenários arquitetónicos.</td><td><span class="badge badge-avancado">Avançado</span></td></tr>
-                    <tr><td><strong>Módulo 10</strong></td><td>Projeto Final de Portfólio: Execução completa de um retrato hiper-realista em grande formato utilizando técnica mista.</td><td><span class="badge badge-avancado">Avançado</span></td></tr>
-                </tbody>
-            </table>
-        </div>
+        <div class="section-title" style="font-size: 24px; margin-top: 60px;">Programa <span>Curricular Dinâmico</span></div>
+        <div class="section-subtitle" style="margin-bottom: 30px;">Clique nos níveis à esquerda e navegue pelos módulos no painel deslizante</div>
+        
+        <div class="grade-programa-dinamico">
+            
+            <div class="abas-menu-vertical">
+                <button class="aba-botao ativa" onclick="alternarAbaPrograma(event, 'aba-zero')">Do Zero ao Primeiro Realismo</button>
+                <button class="aba-botao" onclick="alternarAbaPrograma(event, 'aba-retratos')">Retratos Realistas Avançados</button>
+                <button class="aba-botao" onclick="alternarAbaPrograma(event, 'aba-texturas')">Mestria de Texturas e Poros</button>
+                <button class="aba-botao" onclick="alternarAbaPrograma(event, 'aba-especiais')">Projetos de Alta Performance</button>
+            </div>
 
+            <div class="paineis-conteudo-container">
+                
+                <div id="aba-zero" class="conteudo-aba-painel ativo">
+                    <div class="carrossel-container">
+                        <button class="seta-carrossel seta-esquerda" onclick="rolarCarrosselHorizontal('trilho-zero', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="carrossel-trilho" id="trilho-zero">
+                            <div class="capa-modulo-card"><img src="capas/modulo1.jpg" alt="Módulo 01"></div>
+                            <div class="capa-modulo-card"><img src="capas/modulo2.jpg" alt="Módulo 02"></div>
+                            <div class="capa-modulo-card"><img src="capas/modulo3.jpg" alt="Módulo 03"></div>
+                            <div class="capa-modulo-card"><img src="capas/modulo4.jpg" alt="Módulo 04"></div>
+                        </div>
+                        <button class="seta-carrossel seta-direita" onclick="rolarCarrosselHorizontal('trilho-zero', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <div id="aba-retratos" class="conteudo-aba-painel">
+                    <div class="carrossel-container">
+                        <button class="seta-carrossel seta-esquerda" onclick="rolarCarrosselHorizontal('trilho-retratos', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="carrossel-trilho" id="trilho-retratos">
+                            <div class="capa-modulo-card"><img src="capas/modulo5.jpg" alt="Módulo 05"></div>
+                            <div class="capa-modulo-card"><img src="capas/modulo6.jpg" alt="Módulo 06"></div>
+                            <div class="capa-modulo-card"><img src="capas/modulo7.jpg" alt="Módulo 07"></div>
+                        </div>
+                        <button class="seta-carrossel seta-direita" onclick="rolarCarrosselHorizontal('trilho-retratos', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <div id="aba-texturas" class="conteudo-aba-painel">
+                    <div class="carrossel-container">
+                        <button class="seta-carrossel seta-esquerda" onclick="rolarCarrosselHorizontal('trilho-texturas', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="carrossel-trilho" id="trilho-texturas">
+                            <div class="capa-modulo-card"><img src="capas/modulo8.jpg" alt="Módulo 08"></div>
+                            <div class="capa-modulo-card"><img src="capas/modulo9.jpg" alt="Módulo 09"></div>
+                        </div>
+                        <button class="seta-carrossel seta-direita" onclick="rolarCarrosselHorizontal('trilho-texturas', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <div id="aba-especiais" class="conteudo-aba-painel">
+                    <div class="carrossel-container">
+                        <button class="seta-carrossel seta-esquerda" onclick="rolarCarrosselHorizontal('trilho-especiais', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="carrossel-trilho" id="trilho-especiais">
+                            <div class="capa-modulo-card"><img src="capas/modulo10.jpg" alt="Módulo 10"></div>
+                        </div>
+                        <button class="seta-carrossel seta-direita" onclick="rolarCarrosselHorizontal('trilho-especiais', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
         <div style="text-align: center; margin-top: 40px;">
             <a href="#inscricao" onclick="exibirFormulario()" class="btn">Garantir Minha Vaga no Curso</a>
         </div>
@@ -388,10 +589,8 @@
         <div class="iframe-container" id="iframe-wrapper"></div>
     </div>
 
-    <!-- SEÇÃO COMPLETA: ÁREA PRIVADA DE VÍDEOS COM AUTENTICAÇÃO -->
     <div id="area-alunos" class="section" style="background-color: #0b0e14; border-top: 1px solid var(--borda);">
         
-        <!-- Formulário de Autenticação (Visível apenas se deslogado) -->
         <div id="bloco-autenticacao" class="auth-wrapper">
             <h3 id="auth-titulo-painel">Acesso do Aluno</h3>
             <p style="color: var(--text-mutado); font-size: 14px; margin-bottom: 25px;">Faça login para assistir às suas aulas gravadas da escola.</p>
@@ -409,12 +608,10 @@
             <button class="btn" style="width: 100%; padding: 12px; font-size: 14px;" id="btn-auth-acao" onclick="gerenciarAutenticacao()">Entrar no Painel</button>
             
             <p class="auth-switch-text" style="text-decoration: none; cursor: default;">
-    Acesso restrito a alunos inscritos. Gerasse a sua conta após a confirmação do pagamento.
-</p>
+                Acesso restrito a alunos inscritos. Gerasse a sua conta após a confirmation do pagamento.
             </p>
         </div>
 
-        <!-- Painel de Videoaulas (Bloqueado de fábrica, só aparece após o login completo) -->
         <div id="bloco-videoaulas" style="display: none;">
             <div class="section-title">Suas <span>Videoaulas Gravadas</span></div>
             <div class="section-subtitle">Módulos técnicos contratados para o seu desenvolvimento</div>
@@ -474,115 +671,27 @@
         &copy; 2026 Jasse Desenhos. Todos os direitos reservados.
     </footer>
 
-    <!-- INCLUSÃO DA INTERFACE E ENGINE DE SEGURANÇA DO FIREBASE COM AS SUAS COMPONENTES REAIS -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
-        import { 
-            getAuth, 
-            createUserWithEmailAndPassword, 
-            signInWithEmailAndPassword, 
-            signOut, 
-            onAuthStateChanged 
-        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
-        // Credenciais Oficiais extraídas do seu Painel do Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyBYrVV_r-sCrf5HeC08nk3mhBqz-6Y8SuM",
-            authDomain: "jasse-desenhos.firebaseapp.com",
-            projectId: "jasse-desenhos",
-            storageBucket: "jasse-desenhos.firebasestorage.app",
-            messagingSenderId: "93412100858",
-            appId: "1:93412100858:web:36b7b3af063cb96e1c1743",
-            measurementId: "G-8D61LL4Z52"
-        };
-
-        // Inicialização dos Serviços
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const auth = getAuth(app);
-
-        let flagCriarConta = false;
-
-        // Alternador visual para Mudar de Login para Registo e vice-versa
-        window.mudarModoInterface = function(modoRegistro) {
-            flagCriarConta = modoRegistro;
-            const titulo = document.getElementById("auth-titulo-painel");
-            const btnAcao = document.getElementById("btn-auth-acao");
-            const wrapperAlternar = document.getElementById("wrapper-alternar-modo");
-
-            if (flagCriarConta) {
-                titulo.innerText = "Criar Registro de Aluno";
-                btnAcao.innerText = "Cadastrar e Aceder";
-                wrapperAlternar.innerHTML = 'Já possui conta de aluno? <span onclick="mudarModoInterface(false)">Fazer Login</span>';
-            } else {
-                titulo.innerText = "Acesso do Aluno";
-                btnAcao.innerText = "Entrar no Painel";
-                wrapperAlternar.innerHTML = 'Não tem uma conta de acesso? <span onclick="mudarModoInterface(true)">Criar Novo Registro</span>';
-            }
-        };
-
-        // Processador de Autenticação (Criar Conta ou Login)
-        window.gerenciarAutenticacao = function() {
-            const email = document.getElementById("input-email").value.trim();
-            const senha = document.getElementById("input-senha").value;
-
-            if (!email || !senha) {
-                alert("Por favor, introduza o seu e-mail e a sua palavra-passe.");
-                return;
-            }
-
-            if (flagCriarConta) {
-                createUserWithEmailAndPassword(auth, email, senha)
-                    .then(() => alert("Conta criada com sucesso! Aproveite as videoaulas."))
-                    .catch((err) => alert("Erro ao cadastrar: " + filtrarMensagemErro(err.code)));
-            } else {
-                signInWithEmailAndPassword(auth, email, senha)
-                    .then(() => alert("Acesso autorizado!"))
-                    .catch((err) => alert("Erro de acesso: " + filtrarMensagemErro(err.code)));
-            }
-        };
-
-        // Função para Deslogar / Encerrar Sessão
-        window.encerrarSessao = function() {
-            signOut(auth).then(() => alert("Desconectado de forma segura."));
-        };
-
-        // Escuta em Tempo Real as Mudanças de Estado do Utilizador
-        onAuthStateChanged(auth, (user) => {
-            const blocoLogin = document.getElementById("bloco-autenticacao");
-            const blocoVideos = document.getElementById("bloco-videoaulas");
-            const statusTopNav = document.getElementById("user-status-area");
-
-            if (user) {
-                // Caso esteja logado: Esconde formulário de login e mostra as aulas
-                blocoLogin.style.display = "none";
-                blocoVideos.style.display = "block";
-                statusTopNav.innerHTML = `
-                    <span class="user-email-display"><i class="fa-solid fa-user-check"></i> ${user.email}</span>
-                    <button class="btn-logout" onclick="encerrarSessao()">Sair</button>
-                `;
-            } else {
-                // Caso não esteja logado: Mostra tela de login e esconde as aulas
-                blocoLogin.style.display = "block";
-                blocoVideos.style.display = "none";
-                statusTopNav.innerHTML = "";
-            }
-        });
-
-        // Tradutor de Códigos de Erro Nativos do Firebase
-        function filtrarMensagemErro(codigo) {
-            switch(codigo) {
-                case 'auth/email-already-in-use': return "Este endereço de e-mail já está associado a outro aluno.";
-                case 'auth/weak-password': return "A palavra-passe deve conter pelo menos 6 caracteres.";
-                case 'auth/invalid-credential': return "Credenciais inválidas. Verifique o seu e-mail e palavra-passe.";
-                case 'auth/invalid-email': return "O formato do e-mail inserido não é válido.";
-                default: return "Ocorreu um erro inesperado na ligação com o servidor.";
-            }
-        }
-    </script>
-
     <script>
+        // Função responsável por fazer a troca das abas de níveis de curso
+        function alternarAbaPrograma(evento, idAba) {
+            const botoes = document.querySelectorAll('.aba-botao');
+            botoes.forEach(b => b.classList.remove('ativa'));
+
+            const paineis = document.querySelectorAll('.conteudo-aba-painel');
+            paineis.forEach(p => p.classList.remove('ativo'));
+
+            evento.currentTarget.classList.add('ativa');
+            document.getElementById(idAba).classList.add('ativo');
+        }
+
+        // Função responsável pelo deslizamento horizontal infinito do carrossel pelas setas
+        function rolarCarrosselHorizontal(idTrilho, direcao) {
+            const trilho = document.getElementById(idTrilho);
+            const scrollAmount = 220; // Tamanho ideal do card + gap
+            trilho.scrollLeft += (scrollAmount * direcao * 2); // Move de 2 em 2 unidades
+        }
+
+        // Exibição controlada do formulário Google
         function exibirFormulario() {
             var seccaoFormulario = document.getElementById("inscricao");
             var wrapper = document.getElementById("iframe-wrapper");
@@ -595,6 +704,81 @@
             setTimeout(function() {
                 seccaoFormulario.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 60);
+        }
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+        import { 
+            getAuth, 
+            createUserWithEmailAndPassword, 
+            signInWithEmailAndPassword, 
+            signOut, 
+            onAuthStateChanged 
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBYrVV_r-sCrf5HeC08nk3mhBqz-6Y8SuM",
+            authDomain: "jasse-desenhos.firebaseapp.com",
+            projectId: "jasse-desenhos",
+            storageBucket: "jasse-desenhos.firebasestorage.app",
+            messagingSenderId: "93412100858",
+            appId: "1:93412100858:web:36b7b3af063cb96e1c1743",
+            measurementId: "G-8D61LL4Z52"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+
+        let flagCriarConta = false;
+
+        window.gerenciarAutenticacao = function() {
+            const email = document.getElementById("input-email").value.trim();
+            const senha = document.getElementById("input-senha").value;
+
+            if (!email || !senha) {
+                alert("Por favor, introduza o seu e-mail e a sua palavra-passe.");
+                return;
+            }
+
+            signInWithEmailAndPassword(auth, email, senha)
+                .then(() => alert("Acesso autorizado!"))
+                .catch((err) => alert("Erro de acesso: " + filtrarMensagemErro(err.code)));
+        };
+
+        window.encerrarSessao = function() {
+            signOut(auth).then(() => alert("Desconectado de forma segura."));
+        };
+
+        onAuthStateChanged(auth, (user) => {
+            const blocoLogin = document.getElementById("bloco-autenticacao");
+            const blocoVideos = document.getElementById("bloco-videoaulas");
+            const statusTopNav = document.getElementById("user-status-area");
+
+            if (user) {
+                blocoLogin.style.display = "none";
+                blocoVideos.style.display = "block";
+                statusTopNav.innerHTML = `
+                    <span class="user-email-display"><i class="fa-solid fa-user-check"></i> ${user.email}</span>
+                    <button class="btn-logout" onclick="encerrarSessao()">Sair</button>
+                `;
+            } else {
+                blocoLogin.style.display = "block";
+                blocoVideos.style.display = "none";
+                statusTopNav.innerHTML = "";
+            }
+        });
+
+        function filtrarMensagemErro(codigo) {
+            switch(codigo) {
+                case 'auth/email-already-in-use': return "Este endereço de e-mail já está associado a outro aluno.";
+                case 'auth/weak-password': return "A palavra-passe deve conter pelo menos 6 caracteres.";
+                case 'auth/invalid-credential': return "Credenciais inválidas. Verifique o seu e-mail e palavra-passe.";
+                case 'auth/invalid-email': return "O formato do e-mail inserido não é válido.";
+                default: return "Ocorreu um erro inesperado na ligação com o servidor.";
+            }
         }
     </script>
 </body>
