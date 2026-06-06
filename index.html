@@ -34,9 +34,15 @@
         header { background-color: rgba(14, 17, 22, 0.95); backdrop-filter: blur(10px); padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--acento-azul); position: sticky; top: 0; z-index: 1000; }
         .logo { font-size: 22px; font-weight: 800; letter-spacing: 3px; color: var(--text-claro); text-decoration: none; }
         .logo span { color: var(--acento-vermelho); }
-        nav a { color: var(--text-mutado); text-decoration: none; margin-left: 25px; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; transition: color 0.3s ease; }
+        nav { display: flex; align-items: center; }
+        nav a { color: var(--text-mutated: #9ca3af); color: var(--text-mutado); text-decoration: none; margin-left: 25px; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; transition: color 0.3s ease; }
         nav a:hover { color: var(--acento-azul); }
         
+        /* Botão de Estado de Login no Menu */
+        .auth-nav-btn { background: transparent; border: 1px solid var(--acento-azul); color: var(--acento-azul); padding: 6px 15px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin-left: 25px; transition: all 0.3s ease; }
+        .auth-nav-btn:hover { background: var(--acento-azul); color: var(--bg-principal); }
+        .user-logged-info { font-size: 12px; color: var(--acento-verde); margin-left: 25px; display: flex; align-items: center; gap: 8px; }
+
         /* Hero Section com Iluminação de Estúdio */
         .hero { padding: 140px 50px; text-align: center; background: radial-gradient(circle at center, #142035 0%, var(--bg-principal) 70%); }
         .hero h1 { font-size: 56px; margin-bottom: 25px; letter-spacing: -0.5px; font-weight: 800; line-height: 1.2; color: var(--text-claro); }
@@ -71,13 +77,6 @@
         .portfolio-item.video-container-block { grid-column: 1 / -1; border: 1px solid rgba(255, 74, 90, 0.4); }
         .portfolio-item.video-container-block video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; margin-bottom: 20px; border: 1px solid var(--borda); background-color: #000000; border-radius: 4px; }
         .portfolio-item.video-container-block h3 { color: var(--acento-vermelho); }
-
-        /* Lista de Materiais com Lateral Azul */
-        .materials-container { background-color: var(--bg-card); border: 1px solid var(--borda); padding: 45px; border-radius: 6px; position: relative; overflow: hidden; }
-        .materials-container::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background-color: var(--acento-azul); }
-        .materials-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; list-style: none; padding: 0; }
-        .materials-list li { color: var(--text-claro); font-size: 15px; display: flex; align-items: center; }
-        .materials-list li::before { content: "✓"; color: var(--acento-azul); margin-right: 12px; font-weight: 900; font-size: 16px; }
 
         /* Painel e Preços dos Cursos */
         .cursos-modalidade-info { background: linear-gradient(135deg, #111622 0%, #1a2233 100%); border: 1px solid var(--borda); padding: 30px; border-radius: 8px; text-align: center; margin-bottom: 40px; font-size: 18px; border-left: 4px solid var(--acento-verde); }
@@ -128,6 +127,31 @@
         .tabela-precos tr:last-child td { border-bottom: none; }
         .tabela-precos .preco-tag { font-weight: 700; color: var(--acento-verde); }
 
+        /* Lista de Materiais com Lateral Azul */
+        .materials-container { background-color: var(--bg-card); border: 1px solid var(--borda); padding: 45px; border-radius: 6px; position: relative; overflow: hidden; }
+        .materials-container::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background-color: var(--acento-azul); }
+        .materials-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; list-style: none; padding: 0; }
+        .materials-list li { color: var(--text-claro); font-size: 15px; display: flex; align-items: center; }
+        .materials-list li::before { content: "✓"; color: var(--acento-azul); margin-right: 12px; font-weight: 900; font-size: 16px; }
+
+        /* NOVA SEÇÃO: Sistema de Login / Registo Avançado */
+        .auth-container { max-width: 450px; margin: 40px auto; padding: 40px 30px; background-color: var(--bg-card); border: 1px solid var(--borda); border-radius: 8px; box-shadow: 0 15px 35px rgba(0,0,0,0.6); text-align: center; }
+        .auth-container h3 { margin-top: 0; font-size: 24px; color: var(--acento-azul); }
+        .auth-input-group { margin-bottom: 20px; text-align: left; }
+        .auth-input-group label { display: block; font-size: 13px; color: var(--text-mutated: #9ca3af); color: var(--text-mutado); margin-bottom: 6px; font-weight: 600; text-transform: uppercase; }
+        .auth-input-group input { width: 100%; padding: 12px 15px; background-color: #0d1117; border: 1px solid var(--borda); border-radius: 4px; color: #fff; font-size: 15px; box-sizing: border-box; }
+        .auth-input-group input:focus { border-color: var(--acento-azul); outline: none; }
+        .auth-toggle-text { margin-top: 20px; font-size: 14px; color: var(--text-mutado); }
+        .auth-toggle-text span { color: var(--acento-vermelho); cursor: pointer; font-weight: bold; text-decoration: underline; }
+
+        /* NOVA SEÇÃO: Painel de Videoaulas Privado */
+        .videos-privados-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 30px; }
+        .video-aula-card { background-color: #0d1117; border: 1px solid var(--borda); border-radius: 6px; overflow: hidden; padding: 15px; transition: border-color 0.3s ease; }
+        .video-aula-card:hover { border-color: var(--acento-verde); }
+        .video-aula-card video { width: 100%; aspect-ratio: 16/9; background-color: #000; border-radius: 4px; margin-bottom: 15px; }
+        .video-aula-card h4 { margin: 0 0 5px 0; font-size: 16px; color: var(--text-claro); }
+        .video-aula-card p { margin: 0; font-size: 13px; color: var(--text-mutado); }
+
         /* Seção de Redes Sociais com Links Oficiais */
         .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-top: 30px; }
         .social-card { background-color: var(--bg-card); border: 1px solid var(--borda); padding: 25px 15px; text-align: center; border-radius: 8px; text-decoration: none; color: var(--text-claro); font-weight: 700; font-size: 15px; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 15px; }
@@ -168,12 +192,15 @@
 
     <header>
         <a href="#" class="logo">JASSE<span>DESENHOS</span></a>
-        <nav>
+        <nav id="menu-navegacao">
             <a href="#portfolio">Portfólio</a>
             <a href="#cursos">Cursos</a>
             <a href="#encomendas">Encomendas</a>
             <a href="#plataformas">Plataformas</a>
             <a href="#sobre">O Artista</a>
+            <a href="#area-privada" id="nav-link-aulas">Área de Alunos</a>
+            <!-- Estado de Autenticação Injetado por JS aqui -->
+            <span id="user-status-area"></span>
         </nav>
     </header>
 
@@ -189,14 +216,14 @@
         <div class="features-grid">
             <div class="feature-card">
                 <h3>Domine o desenho como um mestre</h3>
-                <p>Aprenda a enxergar como um artista, desenvolver técnicas avançadas de perceção.</p>
+                <p>Aprenda a enxergar como um artista, desenvolver técnicas avançadas de percepção.</p>
             </div>
             <div class="feature-card">
                 <h3>Domínio de luz, sombras e volume</h3>
                 <p>Exercícios práticos fundamentais para suavizar gradientes e evitar marcações indesejadas no papel.</p>
             </div>
             <div class="feature-card">
-                <h3>Domíne as Texturas de pele</h3>
+                <h3>Domine as Texturas de pele</h3>
                 <p>Treinos específicos para simular desde a suavidade da pele até à rugosidade de superfícies complexas.</p>
             </div>
         </div>
@@ -206,25 +233,21 @@
         <div class="section-title">Galeria de <span>Realismo</span></div>
         <div class="section-subtitle">Minha Galeria</div>
         <div class="portfolio-grid">
-            
             <div class="portfolio-item">
                 <img src="1.jpg" alt="Retrato Hiper-realista">
                 <h3>Retrato Hiper-realista</h3>
-                <p>Estudo de poros e texturas  na pele.</p>
+                <p>Estudo de poros e texturas na pele.</p>
             </div>
-
             <div class="portfolio-item">
                 <img src="2.jpg" alt="O Olhar">
                 <h3>O Olhar</h3>
                 <p>Técnicas de alto contraste, brilho e profundidade na íris.</p>
             </div>
-
             <div class="portfolio-item">
                 <img src="3.jpg" alt="Técnicas de Textura Avançada">
                 <h3>Textura Avançada</h3>
                 <p>Demonstração de texturas e realces avançados.</p>
             </div>
-
             <div class="portfolio-item video-container-block">
                 <video controls preload="metadata" playsinline muted loop>
                     <source src="5.mp4" type="video/mp4">
@@ -233,18 +256,15 @@
                 <h3>Prêmio Jovem Criativo</h3>
                 <p>Salvador Jasse laureado um dos melhores artistas de Moçambique em 2022, aos vinte anos, pelo projecto Prêmio Jovem Criativo, em Maputo, pela representação do distrito de Gondola e Província de Manica.</p>
             </div>
-
         </div>
     </div>
 
     <div id="cursos" class="section">
         <div class="section-title">Nossos <span>Cursos</span></div>
         <div class="section-subtitle">Formação técnica estruturada e adaptada ao seu ritmo</div>
-        
         <div class="cursos-modalidade-info">
             Todas as aulas seguem a modalidade <strong>Híbrida (Online e Presencial)</strong>, aliando flexibilidade digital com acompanhamento prático.
         </div>
-
         <div class="cards-investimento">
             <div class="card-preco">
                 <h3>Nível Iniciante</h3>
@@ -253,7 +273,6 @@
                 <span class="periodo">por mês</span>
                 <span class="badge badge-iniciante">Módulos 01 a 04</span>
             </div>
-            
             <div class="card-preco destacado">
                 <h3>Nível Intermediário</h3>
                 <span class="duracao">Duração: 3 Meses</span>
@@ -261,7 +280,6 @@
                 <span class="periodo">por mês</span>
                 <span class="badge badge-intermed">Módulos 05 a 07</span>
             </div>
-            
             <div class="card-preco">
                 <h3>Nível Avançado</h3>
                 <span class="duracao">Duração: 3 Meses</span>
@@ -282,56 +300,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><strong>Módulo 01</strong></td>
-                        <td>Introdução aos materiais de desenho: Escolha de papéis, graduações de grafite e ferramentas de esbatimento.</td>
-                        <td><span class="badge badge-iniciante">Iniciante</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Módulo 02</strong></td>
-                        <td>Exercícios de aquecimento das mãos artísticas: Coordenação motora, flexibilidade vs precisão no traço inicial.</td>
-                        <td><span class="badge badge-iniciante">Iniciante</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Módulo 03</strong></td>
-                        <td>A essência do realismo: Observação e imaginação, atenção e percepção vs interpretação conceitual.</td>
-                        <td><span class="badge badge-iniciante">Iniciante</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Módulo 04</strong></td>
-                        <td>Conceitos fundamentais do realismo: Luz, Sombra, Volume e Profundidade.</td>
-                        <td><span class="badge badge-iniciante">Iniciante</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Módulo 05</strong></td>
-                        <td>Enquadramento e Proporções: Uso da grelha e espaçamento das formas no desenho.</td>
-                        <td><span class="badge badge-intermed">Intermediário</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Módulo 06</strong></td>
-                        <td>Sombreamento de pelo: Desenho de olhos, nariz boca, orelhas e maçã do rosto.</td>
-                        <td><span class="badge badge-intermed">Intermediário</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Módulo 07</strong></td>
-                        <td>Cabelos e pêlos: Técnicas de sombreamento para cabelos lisos e crespos, fios soltos e barbas.</td>
-                        <td><span class="badge badge-intermed">Intermediário</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Módulo 08</strong></td>
-                        <td>Texturas avançadas: Poros da pele, rugas, marcas de expressão e brilho suado ou pele oleosa.</td>
-                        <td><span class="badge badge-avancado">Avançado</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Módulo 09</strong></td>
-                        <td>Desenho de Elementos Não-Orgânicos: Jogo de luz e reflexos aplicados a texturas metálicas, vidros, tecidos e cenários arquitetónicos.</td>
-                        <td><span class="badge badge-avancado">Avançado</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Módulo 10</strong></td>
-                        <td>Projeto Final de Portfólio: Execução completa de um retrato hiper-realista em grande formato utilizando técnica mista.</td>
-                        <td><span class="badge badge-avancado">Avançado</span></td>
-                    </tr>
+                    <tr><td><strong>Módulo 01</strong></td><td>Introdução aos materiais de desenho: Escolha de papéis, graduações de grafite e ferramentas de esbatimento.</td><td><span class="badge badge-iniciante">Iniciante</span></td></tr>
+                    <tr><td><strong>Módulo 02</strong></td><td>Exercícios de aquecimento das mãos artísticas: Coordenação motora, flexibilidade vs precisão no traço inicial.</td><td><span class="badge badge-iniciante">Iniciante</span></td></tr>
+                    <tr><td><strong>Módulo 03</strong></td><td>A essência do realismo: Observação e imaginação, atenção e percepção vs interpretação conceitual.</td><td><span class="badge badge-iniciante">Iniciante</span></td></tr>
+                    <tr><td><strong>Módulo 04</strong></td><td>Conceitos fundamentais do realismo: Luz, Sombra, Volume e Profundidade.</td><td><span class="badge badge-iniciante">Iniciante</span></td></tr>
+                    <tr><td><strong>Módulo 05</strong></td><td>Enquadramento e Proporções: Uso da grelha e espaçamento das formas no desenho.</td><td><span class="badge badge-intermed">Intermediário</span></td></tr>
+                    <tr><td><strong>Módulo 06</strong></td><td>Sombreamento de pelo: Desenho de olhos, nariz boca, orelhas e maçã do rosto.</td><td><span class="badge badge-intermed">Intermediário</span></td></tr>
+                    <tr><td><strong>Módulo 07</strong></td><td>Cabelos e pêlos: Técnicas de sombreamento para cabelos lisos e crespos, fios soltos e barbas.</td><td><span class="badge badge-intermed">Intermediário</span></td></tr>
+                    <tr><td><strong>Módulo 08</strong></td><td>Texturas avançadas: Poros da pele, rugas, marcas de expressão e brilho suado ou pele oleosa.</td><td><span class="badge badge-avancado">Avançado</span></td></tr>
+                    <tr><td><strong>Módulo 09</strong></td><td>Desenho de Elementos Não-Orgânicos: Jogo de luz e reflexos aplicados a texturas metálicas, vidros, tecidos e cenários arquitetónicos.</td><td><span class="badge badge-avancado">Avançado</span></td></tr>
+                    <tr><td><strong>Módulo 10</strong></td><td>Projeto Final de Portfólio: Execução completa de um retrato hiper-realista em grande formato utilizando técnica mista.</td><td><span class="badge badge-avancado">Avançado</span></td></tr>
                 </tbody>
             </table>
         </div>
@@ -341,58 +319,44 @@
         </div>
     </div>
 
+    <!-- SEÇÃO DO FORMULÁRIO DE INSCRIÇÃO -->
+    <div id="inscricao" class="form-section section">
+        <div class="section-title">Ficha de <span>Inscrição</span></div>
+        <div class="section-subtitle" style="margin-bottom: 30px;">Preencha os dados abaixo para concluir o seu registo nos nossos cursos.</div>
+        <div class="iframe-container" id="iframe-wrapper"></div>
+    </div>
+
+    <!-- ENCOMENDAS -->
     <div id="encomendas" class="section">
         <div class="section-title">Encomendas de <span>Retratos</span></div>
         <div class="section-subtitle">Eternize os seus momentos mais marcantes com arte realista moderna feito com todo amor e cuidado</div>
-        
         <div class="encomendas-container">
             <div class="encomendas-texto">
                 <h3>Arte feita sob Medida</h3>
-                <p>Produção de retratos artísticos feitos à mão valorizadas aos detalhes. Uma opção exclusiva e sofisticada para presentear pessoas amadas ou decorar as suas salas e escritórios.</p>
-                <p>Registramos temas sensíveis que causam emoção:</p>
+                <p>Produção de retratos artísticos feitos à mão valorizadas aos detalhes.</p>
                 <ul class="temas-list">
                     <li><i class="fa-solid fa-heart"></i> Casamentos</li>
                     <li><i class="fa-solid fa-cake-candles"></i> Aniversários</li>
                     <li><i class="fa-solid fa-baby"></i> Crianças</li>
                     <li><i class="fa-solid fa-child-baby-bliss"></i> Recém-nascidos</li>
                 </ul>
-                <p>Todos os desenhos são feitos de lápis de alta qualidade.</p>
             </div>
             <div>
                 <table class="tabela-precos">
-                    <thead>
-                        <tr>
-                            <th>Tamanho</th>
-                            <th>Custo por tamanho</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>Tamanho</th><th>Custo por tamanho</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td><strong>Tamanho A4</strong></td>
-                            <td class="preco-tag">1 500 MT</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Tamanho A3</strong></td>
-                            <td class="preco-tag">3 000 MT</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Tamanho A2</strong></td>
-                            <td class="preco-tag">5 500 MT</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Tamanho A1</strong></td>
-                            <td class="preco-tag">12 000 MT</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Tamanho A0</strong></td>
-                            <td class="preco-tag">20 000 MT</td>
-                        </tr>
+                        <tr><td><strong>Tamanho A4</strong></td><td class="preco-tag">1 500 MT</td></tr>
+                        <tr><td><strong>Tamanho A3</strong></td><td class="preco-tag">3 000 MT</td></tr>
+                        <tr><td><strong>Tamanho A2</strong></td><td class="preco-tag">5 500 MT</td></tr>
+                        <tr><td><strong>Tamanho A1</strong></td><td class="preco-tag">12 000 MT</td></tr>
+                        <tr><td><strong>Tamanho A0</strong></td><td class="preco-tag">20 000 MT</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
+    <!-- MATERIAIS -->
     <div id="materiais" class="section">
         <div class="section-title">Materiais <span>Essenciais</span></div>
         <div class="section-subtitle">O instrumental básico recomendado para o acompanhamento das aulas</div>
@@ -402,8 +366,8 @@
                 <li>Lapiseiras (0.5 e 0.7 mm)</li>
                 <li>Lápis de carvão</li>
                 <li>Esfuminhos (Tamanhos variados)</li>
-                <li>Borracha </li>
-                <li>Papel de desenho </li>
+                <li>Borracha</li>
+                <li>Papel de desenho</li>
             </ul>
         </div>
     </div>
@@ -411,45 +375,79 @@
     <div id="plataformas" class="section">
         <div class="section-title">Nossas <span>Plataformas</span></div>
         <div class="section-subtitle">Acompanhe os bastidores, tutoriais rápidos e novos lançamentos artísticos</div>
-        
         <div class="social-grid">
-            <a href="https://web.facebook.com/share/g/1Jo5nh8VDs/" target="_blank" class="social-card facebook">
-                <i class="fa-brands fa-facebook-f"></i>
-                <span>Facebook</span>
-            </a>
-            <a href="https://wa.me/258860069019" target="_blank" class="social-card whatsapp">
-                <i class="fa-brands fa-whatsapp"></i>
-                <span>WhatsApp</span>
-            </a>
-            <a href="https://youtube.com/channel/UCSjqeWM5asALyKCYNJ8zB8w" target="_blank" class="social-card youtube">
-                <i class="fa-brands fa-youtube"></i>
-                <span>YouTube</span>
-            </a>
-            <a href="https://tiktok.com" target="_blank" class="social-card tiktok">
-                <i class="fa-brands fa-tiktok"></i>
-                <span>TikTok</span>
-            </a>
-            <a href="https://instagram.com" target="_blank" class="social-card instagram">
-                <i class="fa-brands fa-instagram"></i>
-                <span>Instagram</span>
-            </a>
+            <a href="https://web.facebook.com/share/g/1Jo5nh8VDs/" target="_blank" class="social-card facebook"><i class="fa-brands fa-facebook-f"></i><span>Facebook</span></a>
+            <a href="https://wa.me/258860069019" target="_blank" class="social-card whatsapp"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span></a>
+            <a href="https://youtube.com/channel/UCSjqeWM5asALyKCYNJ8zB8w" target="_blank" class="social-card youtube"><i class="fa-brands fa-youtube"></i><span>YouTube</span></a>
+            <a href="https://tiktok.com" target="_blank" class="social-card tiktok"><i class="fa-brands fa-tiktok"></i><span>TikTok</span></a>
+            <a href="https://instagram.com" target="_blank" class="social-card instagram"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a>
         </div>
     </div>
 
-    <div id="inscricao" class="form-section section">
-        <div class="section-title">Ficha de Inscrição</span></div>
-        <div class="section-subtitle" style="margin-bottom: 30px;">Preencha os dados abaixo para concluir o seu registo nos nossos cursos.</div>
-        <div class="iframe-container" id="iframe-wrapper">
+    <!-- NOVA SEÇÃO INTERATIVA: ÁREA PRIVADA (AUTENTICAÇÃO & COMPARTILHAMENTO) -->
+    <div id="area-privada" class="section" style="border-top: 1px solid var(--borda); margin-top: 40px; background: #0b0f17;">
+        
+        <!-- Bloqueio 1: Interface de Login/Registo (Visível apenas se deslogado) -->
+        <div id="auth-block" class="auth-container">
+            <h3 id="auth-title">Aceder à Área de Alunos</h3>
+            <p style="color: var(--text-mutado); font-size: 14px; margin-bottom: 25px;">Insira os seus dados de registo para assistir às videoaulas gravadas.</p>
+            
+            <div class="auth-input-group">
+                <label>E-mail institucional/pessoal</label>
+                <input type="email" id="auth-email" placeholder="exemplo@dominio.com">
             </div>
+            <div class="auth-input-group">
+                <label>Palavra-passe (Senha)</label>
+                <input type="password" id="auth-password" placeholder="Mínimo 6 caracteres">
+            </div>
+            
+            <button class="btn" id="btn-auth-principal" style="width: 100%; padding: 12px;" onclick="executarAutenticacao()">Entrar no Curso</button>
+            
+            <p class="auth-toggle-text" id="auth-toggle-wrapper">
+                Não tem uma conta de acesso? <span onclick="alternarModoAuth(true)">Criar Registo</span>
+            </p>
+        </div>
+
+        <!-- Bloqueio 2: Grade Privada de Conteúdos (Oculta por padrão via JS) -->
+        <div id="aulas-block" style="display: none;">
+            <div class="section-title">Painel de <span>Videoaulas Gravadas</span></div>
+            <div class="section-subtitle">Aulas exclusivas ordenadas pelo cronograma metodológico</div>
+            
+            <div class="videos-privados-grid">
+                <!-- Aula de Exemplo 1 -->
+                <div class="video-aula-card">
+                    <video controls controlsList="nodownload" preload="metadata">
+                        <source src="aulas/modulo1_introducao.mp4" type="video/mp4">
+                    </video>
+                    <h4>Módulo 01 - Análise de Papéis e Graduações</h4>
+                    <p>Duração: 45 minutos • Técnica de Esbatimento Fundamental</p>
+                </div>
+                <!-- Aula de Exemplo 2 -->
+                <div class="video-aula-card">
+                    <video controls controlsList="nodownload" preload="metadata">
+                        <source src="aulas/modulo2_aquecimento.mp4" type="video/mp4">
+                    </video>
+                    <h4>Módulo 02 - Práticas de Coordenação e Traço Pouco Marcado</h4>
+                    <p>Duração: 30 minutos • Controle de Pressão Manual</p>
+                </div>
+                <!-- Aula de Exemplo 3 -->
+                <div class="video-aula-card">
+                    <video controls controlsList="nodownload" preload="metadata">
+                        <source src="aulas/modulo5_proporcoes.mp4" type="video/mp4">
+                    </video>
+                    <h4>Módulo 05 - Domínio de Grelha e Enquadramentos Críticos</h4>
+                    <p>Duração: 60 minutos • Alinhamento Anatômico dos Olhos</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div id="sobre" class="section">
         <div class="section-title">O <span>Artista</span></div>
         <div class="section-subtitle">Conheça o orientador por trás da metodologia de ensino</div>
         <div class="about-layout">
-            <div class="about-img">
-                <img src="4.jpg" alt="Salvador Zacarias Jasse">
-            </div>
+            <div class="about-img"><img src="4.jpg" alt="Salvador Zacarias Jasse"></div>
             <div class="about-text">
                 <h3>Salvador Zacarias Jasse <span>Artista Visual & Professor</span></h3>
                 <p>Artista e educador especializado em artes visuais e desenhos realistas de alto rigor técnico. Através do uso refinado do grafite e do carvão, dedica-se à reprodução precisa de retratos e texturas complexas, convertendo a observação analítica em obras de impacto visual marcante.</p>
@@ -471,26 +469,138 @@
         &copy; 2026 Jasse Desenhos. Todos os direitos reservados.
     </footer>
 
+    <!-- INCLUSÃO DA INFRAESTRUTURA FIREBASE (MÓDULOS DE AUTENTICAÇÃO OFICIAIS) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { 
+            getAuth, 
+            createUserWithEmailAndPassword, 
+            signInWithEmailAndPassword, 
+            signOut, 
+            onAuthStateChanged 
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // CONFIGURAÇÃO DO SEU BANCO DE DADOS FIREBASE (Substitua pelos seus dados reais obtidos no painel do Firebase)
+        const firebaseConfig = {
+            apiKey: "SUA_API_KEY_AQUI",
+            authDomain: "SEU_PROJETO.firebaseapp.com",
+            projectId: "SEU_PROJETO",
+            storageBucket: "SEU_PROJETO.appspot.com",
+            messagingSenderId: "SEU_SENDER_ID",
+            appId: "SUA_APP_ID"
+        };
+
+        // Inicialização do Ecossistema
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Estado Logístico Interno
+        let modoRegistoAtivo = false;
+
+        // Alternador de Telas (Login / Registo)
+        window.alternarModoAuth = function(ativarRegisto) {
+            modoRegistoAtivo = activarRegisto;
+            const titulo = document.getElementById("auth-title");
+            const btnPrincipal = document.getElementById("btn-auth-principal");
+            const toggleWrapper = document.getElementById("auth-toggle-wrapper");
+
+            if (modoRegistoAtivo) {
+                titulo.innerText = "Criar Conta de Aluno";
+                btnPrincipal.innerText = "Finalizar Registo";
+                toggleWrapper.innerHTML = 'Já possui conta ativa? <span onclick="alternarModoAuth(false)">Fazer Login</span>';
+            } else {
+                titulo.innerText = "Aceder à Área de Alunos";
+                btnPrincipal.innerText = "Entrar no Curso";
+                toggleWrapper.innerHTML = 'Não tem uma conta de acesso? <span onclick="alternarModoAuth(true)">Criar Registo</span>';
+            }
+        };
+
+        // Executor das Operações (Login ou Cadastro no Banco de Dados)
+        window.executarAutenticacao = function() {
+            const email = document.getElementById("auth-email").value;
+            const password = document.getElementById("auth-password").value;
+
+            if (!email || !password) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            if (modoRegistoAtivo) {
+                // Procedimento 1: Criar novo utilizador de forma segura
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        alert("Registo concluído com sucesso! Bem-vindo à Jasse Desenhos.");
+                    })
+                    .catch((error) => {
+                        alert("Erro no registo: " + mapearErrosFirebase(error.code));
+                    });
+            } else {
+                // Procedimento 2: Fazer login de aluno existente
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        alert("Acesso autorizado!");
+                    })
+                    .catch((error) => {
+                        alert("Erro de acesso: " + mapearErrosFirebase(error.code));
+                    });
+            }
+        };
+
+        // Procedimento 3: Logout Completo
+        window.fazerLogout = function() {
+            signOut(auth).then(() => {
+                alert("Sessão terminada.");
+            });
+        };
+
+        // Observador em tempo real (Garante proteção absoluta se o utilizador não estiver logado)
+        onAuthStateChanged(auth, (user) => {
+            const blocoAuth = document.getElementById("auth-block");
+            const blocoAulas = document.getElementById("aulas-block");
+            const statusArea = document.getElementById("user-status-area");
+
+            if (user) {
+                // Se logado: Esconde formulário de login e revela as videoaulas gravadas
+                blocoAuth.style.display = "none";
+                blocoAulas.style.display = "block";
+                statusArea.innerHTML = `
+                    <span class="user-logged-info"><i class="fa-solid fa-circle-user"></i> ${user.email}</span>
+                    <button class="auth-nav-btn" onclick="fazerLogout()">Sair</button>
+                `;
+            } else {
+                // Se deslogado: Esconde as videoaulas e força a exibição do login
+                blocoAuth.style.display = "block";
+                blocoAulas.style.display = "none";
+                statusArea.innerHTML = "";
+            }
+        });
+
+        // Tradutor de erros para os seus alunos
+        function mapearErrosFirebase(codigo) {
+            switch(codigo) {
+                case 'auth/email-already-in-use': return "Este e-mail já está registado na nossa plataforma.";
+                case 'auth/weak-password': return "A palavra-passe deve possuir pelo menos 6 caracteres.";
+                case 'auth/invalid-credential': return "E-mail ou palavra-passe incorretos.";
+                case 'auth/invalid-email': return "O formato do e-mail introduzido é inválido.";
+                default: return "Ocorreu um erro desconhecido. Verifique a ligação.";
+            }
+        }
+    </script>
+
+    <!-- LOGÍSTICA JAVASCRIPT: Controla a exibição inteligente do formulário -->
     <script>
         function exibirFormulario() {
             var seccaoFormulario = document.getElementById("inscricao");
             var wrapper = document.getElementById("iframe-wrapper");
 
-            // Se o contêiner estiver vazio, injetamos o formulário oficial
             if (!wrapper.innerHTML.trim()) {
-                // Configurado com largura adaptável (100%) e altura alta (3000) por ter 11 seções
                 wrapper.innerHTML = '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdrVdynkMPLoX__JAyK1aVXrvYCZIWAt3GfcfgsGi1-X_iDuQ/viewform?embedded=true" width="100%" height="3000" frameborder="0" marginheight="0" marginwidth="0">A carregar…</iframe>';
             }
-
-            // Torna a seção visível na página
             seccaoFormulario.style.display = "block";
-
-            // Aguarda um pequeno instante de renderização do browser e faz scroll suave até lá
             setTimeout(function() {
                 seccaoFormulario.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 60);
         }
     </script>
-
 </body>
 </html>
