@@ -34,14 +34,17 @@
         header { background-color: rgba(14, 17, 22, 0.95); backdrop-filter: blur(10px); padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--acento-azul); position: sticky; top: 0; z-index: 1000; }
         .logo { font-size: 22px; font-weight: 800; letter-spacing: 3px; color: var(--text-claro); text-decoration: none; }
         .logo span { color: var(--acento-vermelho); }
+        
+        /* Navegação com Flexbox para suportar o status do utilizador */
         nav { display: flex; align-items: center; }
-        nav a { color: var(--text-mutated: #9ca3af); color: var(--text-mutado); text-decoration: none; margin-left: 25px; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; transition: color 0.3s ease; }
+        nav a { color: var(--text-mutado); text-decoration: none; margin-left: 25px; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; transition: color 0.3s ease; }
         nav a:hover { color: var(--acento-azul); }
         
-        /* Botão de Estado de Login no Menu */
-        .auth-nav-btn { background: transparent; border: 1px solid var(--acento-azul); color: var(--acento-azul); padding: 6px 15px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin-left: 25px; transition: all 0.3s ease; }
-        .auth-nav-btn:hover { background: var(--acento-azul); color: var(--bg-principal); }
-        .user-logged-info { font-size: 12px; color: var(--acento-verde); margin-left: 25px; display: flex; align-items: center; gap: 8px; }
+        /* Elementos de Autenticação Dinâmicos no Menu */
+        .auth-status-container { display: flex; align-items: center; margin-left: 25px; gap: 15px; }
+        .user-email-display { font-size: 12px; color: var(--acento-verde); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        .btn-logout { background: transparent; border: 1px solid var(--acento-vermelho); color: var(--acento-vermelho); padding: 5px 12px; font-size: 11px; text-transform: uppercase; font-weight: 700; border-radius: 4px; cursor: pointer; transition: all 0.2s ease; }
+        .btn-logout:hover { background: var(--acento-vermelho); color: #fff; }
 
         /* Hero Section com Iluminação de Estúdio */
         .hero { padding: 140px 50px; text-align: center; background: radial-gradient(circle at center, #142035 0%, var(--bg-principal) 70%); }
@@ -77,6 +80,13 @@
         .portfolio-item.video-container-block { grid-column: 1 / -1; border: 1px solid rgba(255, 74, 90, 0.4); }
         .portfolio-item.video-container-block video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; margin-bottom: 20px; border: 1px solid var(--borda); background-color: #000000; border-radius: 4px; }
         .portfolio-item.video-container-block h3 { color: var(--acento-vermelho); }
+
+        /* Lista de Materiais com Lateral Azul */
+        .materials-container { background-color: var(--bg-card); border: 1px solid var(--borda); padding: 45px; border-radius: 6px; position: relative; overflow: hidden; }
+        .materials-container::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background-color: var(--acento-azul); }
+        .materials-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; list-style: none; padding: 0; }
+        .materials-list li { color: var(--text-claro); font-size: 15px; display: flex; align-items: center; }
+        .materials-list li::before { content: "✓"; color: var(--acento-azul); margin-right: 12px; font-weight: 900; font-size: 16px; }
 
         /* Painel e Preços dos Cursos */
         .cursos-modalidade-info { background: linear-gradient(135deg, #111622 0%, #1a2233 100%); border: 1px solid var(--borda); padding: 30px; border-radius: 8px; text-align: center; margin-bottom: 40px; font-size: 18px; border-left: 4px solid var(--acento-verde); }
@@ -127,31 +137,6 @@
         .tabela-precos tr:last-child td { border-bottom: none; }
         .tabela-precos .preco-tag { font-weight: 700; color: var(--acento-verde); }
 
-        /* Lista de Materiais com Lateral Azul */
-        .materials-container { background-color: var(--bg-card); border: 1px solid var(--borda); padding: 45px; border-radius: 6px; position: relative; overflow: hidden; }
-        .materials-container::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background-color: var(--acento-azul); }
-        .materials-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; list-style: none; padding: 0; }
-        .materials-list li { color: var(--text-claro); font-size: 15px; display: flex; align-items: center; }
-        .materials-list li::before { content: "✓"; color: var(--acento-azul); margin-right: 12px; font-weight: 900; font-size: 16px; }
-
-        /* NOVA SEÇÃO: Sistema de Login / Registo Avançado */
-        .auth-container { max-width: 450px; margin: 40px auto; padding: 40px 30px; background-color: var(--bg-card); border: 1px solid var(--borda); border-radius: 8px; box-shadow: 0 15px 35px rgba(0,0,0,0.6); text-align: center; }
-        .auth-container h3 { margin-top: 0; font-size: 24px; color: var(--acento-azul); }
-        .auth-input-group { margin-bottom: 20px; text-align: left; }
-        .auth-input-group label { display: block; font-size: 13px; color: var(--text-mutated: #9ca3af); color: var(--text-mutado); margin-bottom: 6px; font-weight: 600; text-transform: uppercase; }
-        .auth-input-group input { width: 100%; padding: 12px 15px; background-color: #0d1117; border: 1px solid var(--borda); border-radius: 4px; color: #fff; font-size: 15px; box-sizing: border-box; }
-        .auth-input-group input:focus { border-color: var(--acento-azul); outline: none; }
-        .auth-toggle-text { margin-top: 20px; font-size: 14px; color: var(--text-mutado); }
-        .auth-toggle-text span { color: var(--acento-vermelho); cursor: pointer; font-weight: bold; text-decoration: underline; }
-
-        /* NOVA SEÇÃO: Painel de Videoaulas Privado */
-        .videos-privados-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 30px; }
-        .video-aula-card { background-color: #0d1117; border: 1px solid var(--borda); border-radius: 6px; overflow: hidden; padding: 15px; transition: border-color 0.3s ease; }
-        .video-aula-card:hover { border-color: var(--acento-verde); }
-        .video-aula-card video { width: 100%; aspect-ratio: 16/9; background-color: #000; border-radius: 4px; margin-bottom: 15px; }
-        .video-aula-card h4 { margin: 0 0 5px 0; font-size: 16px; color: var(--text-claro); }
-        .video-aula-card p { margin: 0; font-size: 13px; color: var(--text-mutado); }
-
         /* Seção de Redes Sociais com Links Oficiais */
         .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-top: 30px; }
         .social-card { background-color: var(--bg-card); border: 1px solid var(--borda); padding: 25px 15px; text-align: center; border-radius: 8px; text-decoration: none; color: var(--text-claro); font-weight: 700; font-size: 15px; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 15px; }
@@ -162,6 +147,24 @@
         .social-card.tiktok:hover { border-color: #00f3ff; box-shadow: 0 5px 15px rgba(0, 243, 255, 0.2); color: #ff4a5a; }
         .social-card.instagram:hover { border-color: #c13584; box-shadow: 0 5px 15px rgba(193, 53, 132, 0.2); color: #c13584; }
         
+        /* Estilos da Interface de Login / Registo Privado */
+        .auth-wrapper { max-width: 450px; margin: 40px auto; padding: 40px 30px; background-color: var(--bg-card); border: 1px solid var(--borda); border-radius: 8px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); text-align: center; }
+        .auth-wrapper h3 { margin-top: 0; font-size: 24px; color: var(--acento-azul); margin-bottom: 20px; }
+        .auth-group { margin-bottom: 20px; text-align: left; }
+        .auth-group label { display: block; font-size: 12px; color: var(--text-mutado); margin-bottom: 6px; font-weight: 600; text-transform: uppercase; }
+        .auth-group input { width: 100%; padding: 12px 15px; background-color: #0a0c10; border: 1px solid var(--borda); border-radius: 4px; color: #fff; font-size: 15px; box-sizing: border-box; }
+        .auth-group input:focus { border-color: var(--acento-azul); outline: none; }
+        .auth-switch-text { margin-top: 20px; font-size: 14px; color: var(--text-mutado); }
+        .auth-switch-text span { color: var(--acento-vermelho); cursor: pointer; font-weight: bold; text-decoration: underline; }
+
+        /* Estilos do Painel Protegido de Aulas */
+        .aulas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
+        .aula-card { background-color: var(--bg-card); border: 1px solid var(--borda); border-radius: 6px; overflow: hidden; padding: 18px; transition: border-color 0.3s ease; }
+        .aula-card:hover { border-color: var(--acento-verde); }
+        .aula-card video { width: 100%; aspect-ratio: 16/9; background-color: #000; border-radius: 4px; margin-bottom: 15px; }
+        .aula-card h4 { margin: 0 0 5px 0; font-size: 17px; color: var(--text-claro); }
+        .aula-card p { margin: 0; font-size: 14px; color: var(--text-mutado); }
+
         /* Sobre o Artista */
         .about-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 50px; background-color: var(--bg-card); border: 1px solid var(--borda); padding: 50px; border-radius: 6px; align-items: center; }
         .about-img img { width: 100%; height: auto; border: 1px solid var(--borda); border-radius: 4px; object-fit: cover; }
@@ -180,7 +183,9 @@
         @media (max-width: 900px) { .encomendas-container { grid-template-columns: 1fr; } }
         @media (max-width: 768px) {
             header { padding: 20px; flex-direction: column; gap: 15px; }
+            nav { flex-wrap: wrap; justify-content: center; gap: 10px; }
             nav a { margin: 0 10px; font-size: 12px; }
+            .auth-status-container { margin-left: 0; margin-top: 10px; }
             .hero { padding: 90px 20px; }
             .hero h1 { font-size: 38px; }
             .about-layout { grid-template-columns: 1fr; text-align: center; padding: 30px; }
@@ -192,15 +197,15 @@
 
     <header>
         <a href="#" class="logo">JASSE<span>DESENHOS</span></a>
-        <nav id="menu-navegacao">
+        <nav>
             <a href="#portfolio">Portfólio</a>
             <a href="#cursos">Cursos</a>
             <a href="#encomendas">Encomendas</a>
             <a href="#plataformas">Plataformas</a>
             <a href="#sobre">O Artista</a>
-            <a href="#area-privada" id="nav-link-aulas">Área de Alunos</a>
-            <!-- Estado de Autenticação Injetado por JS aqui -->
-            <span id="user-status-area"></span>
+            <a href="#area-alunos">Área de Alunos</a>
+            <!-- Container dinâmico do status do utilizador logado -->
+            <div id="user-status-area" class="auth-status-container"></div>
         </nav>
     </header>
 
@@ -216,14 +221,14 @@
         <div class="features-grid">
             <div class="feature-card">
                 <h3>Domine o desenho como um mestre</h3>
-                <p>Aprenda a enxergar como um artista, desenvolver técnicas avançadas de percepção.</p>
+                <p>Aprenda a enxergar como um artista, desenvolver técnicas avançadas de perceção.</p>
             </div>
             <div class="feature-card">
                 <h3>Domínio de luz, sombras e volume</h3>
                 <p>Exercícios práticos fundamentais para suavizar gradientes e evitar marcações indesejadas no papel.</p>
             </div>
             <div class="feature-card">
-                <h3>Domine as Texturas de pele</h3>
+                <h3>Domíne as Texturas de pele</h3>
                 <p>Treinos específicos para simular desde a suavidade da pele até à rugosidade de superfícies complexas.</p>
             </div>
         </div>
@@ -262,9 +267,11 @@
     <div id="cursos" class="section">
         <div class="section-title">Nossos <span>Cursos</span></div>
         <div class="section-subtitle">Formação técnica estruturada e adaptada ao seu ritmo</div>
+        
         <div class="cursos-modalidade-info">
             Todas as aulas seguem a modalidade <strong>Híbrida (Online e Presencial)</strong>, aliando flexibilidade digital com acompanhamento prático.
         </div>
+
         <div class="cards-investimento">
             <div class="card-preco">
                 <h3>Nível Iniciante</h3>
@@ -319,27 +326,21 @@
         </div>
     </div>
 
-    <!-- SEÇÃO DO FORMULÁRIO DE INSCRIÇÃO -->
-    <div id="inscricao" class="form-section section">
-        <div class="section-title">Ficha de <span>Inscrição</span></div>
-        <div class="section-subtitle" style="margin-bottom: 30px;">Preencha os dados abaixo para concluir o seu registo nos nossos cursos.</div>
-        <div class="iframe-container" id="iframe-wrapper"></div>
-    </div>
-
-    <!-- ENCOMENDAS -->
     <div id="encomendas" class="section">
         <div class="section-title">Encomendas de <span>Retratos</span></div>
         <div class="section-subtitle">Eternize os seus momentos mais marcantes com arte realista moderna feito com todo amor e cuidado</div>
         <div class="encomendas-container">
             <div class="encomendas-texto">
                 <h3>Arte feita sob Medida</h3>
-                <p>Produção de retratos artísticos feitos à mão valorizadas aos detalhes.</p>
+                <p>Produção de retratos artísticos feitos à mão valorizadas aos detalhes. Uma opção exclusiva e sofisticada para presentear pessoas amadas ou decorar as suas salas e escritórios.</p>
+                <p>Registramos temas sensíveis que causam emoção:</p>
                 <ul class="temas-list">
                     <li><i class="fa-solid fa-heart"></i> Casamentos</li>
                     <li><i class="fa-solid fa-cake-candles"></i> Aniversários</li>
                     <li><i class="fa-solid fa-baby"></i> Crianças</li>
                     <li><i class="fa-solid fa-child-baby-bliss"></i> Recém-nascidos</li>
                 </ul>
+                <p>Todos os desenhos are feitos de lápis de alta qualidade.</p>
             </div>
             <div>
                 <table class="tabela-precos">
@@ -356,9 +357,8 @@
         </div>
     </div>
 
-    <!-- MATERIAIS -->
     <div id="materiais" class="section">
-        <div class="section-title">Materiais <span>Essenciais</span></div>
+        <div class="section-title">Materials <span>Essenciais</span></div>
         <div class="section-subtitle">O instrumental básico recomendado para o acompanhamento das aulas</div>
         <div class="materials-container">
             <ul class="materials-list">
@@ -384,63 +384,69 @@
         </div>
     </div>
 
-    <!-- NOVA SEÇÃO INTERATIVA: ÁREA PRIVADA (AUTENTICAÇÃO & COMPARTILHAMENTO) -->
-    <div id="area-privada" class="section" style="border-top: 1px solid var(--borda); margin-top: 40px; background: #0b0f17;">
+    <div id="inscricao" class="form-section section">
+        <div class="section-title">Ficha de Inscrição</div>
+        <div class="section-subtitle" style="margin-bottom: 30px;">Preencha os dados abaixo para concluir o seu registo nos nossos cursos.</div>
+        <div class="iframe-container" id="iframe-wrapper"></div>
+    </div>
+
+    <!-- SEÇÃO COMPLETA: ÁREA PRIVADA DE VÍDEOS COM AUTENTICAÇÃO -->
+    <div id="area-alunos" class="section" style="background-color: #0b0e14; border-top: 1px solid var(--borda);">
         
-        <!-- Bloqueio 1: Interface de Login/Registo (Visível apenas se deslogado) -->
-        <div id="auth-block" class="auth-container">
-            <h3 id="auth-title">Aceder à Área de Alunos</h3>
-            <p style="color: var(--text-mutado); font-size: 14px; margin-bottom: 25px;">Insira os seus dados de registo para assistir às videoaulas gravadas.</p>
+        <!-- Formulário de Autenticação (Visível apenas se deslogado) -->
+        <div id="bloco-autenticacao" class="auth-wrapper">
+            <h3 id="auth-titulo-painel">Acesso do Aluno</h3>
+            <p style="color: var(--text-mutado); font-size: 14px; margin-bottom: 25px;">Faça login para assistir às suas aulas gravadas da escola.</p>
             
-            <div class="auth-input-group">
-                <label>E-mail institucional/pessoal</label>
-                <input type="email" id="auth-email" placeholder="exemplo@dominio.com">
+            <div class="auth-group">
+                <label>E-mail registrado</label>
+                <input type="email" id="input-email" placeholder="seu-email@dominio.com">
             </div>
-            <div class="auth-input-group">
+            
+            <div class="auth-group">
                 <label>Palavra-passe (Senha)</label>
-                <input type="password" id="auth-password" placeholder="Mínimo 6 caracteres">
+                <input type="password" id="input-senha" placeholder="Mínimo 6 caracteres">
             </div>
             
-            <button class="btn" id="btn-auth-principal" style="width: 100%; padding: 12px;" onclick="executarAutenticacao()">Entrar no Curso</button>
+            <button class="btn" style="width: 100%; padding: 12px; font-size: 14px;" id="btn-auth-acao" onclick="gerenciarAutenticacao()">Entrar no Painel</button>
             
-            <p class="auth-toggle-text" id="auth-toggle-wrapper">
-                Não tem uma conta de acesso? <span onclick="alternarModoAuth(true)">Criar Registo</span>
+            <p class="auth-switch-text" id="wrapper-alternar-modo">
+                Não tem uma conta de acesso? <span onclick="mudarModoInterface(true)">Criar Novo Registro</span>
             </p>
         </div>
 
-        <!-- Bloqueio 2: Grade Privada de Conteúdos (Oculta por padrão via JS) -->
-        <div id="aulas-block" style="display: none;">
-            <div class="section-title">Painel de <span>Videoaulas Gravadas</span></div>
-            <div class="section-subtitle">Aulas exclusivas ordenadas pelo cronograma metodológico</div>
+        <!-- Painel de Videoaulas (Bloqueado de fábrica, só aparece após o login completo) -->
+        <div id="bloco-videoaulas" style="display: none;">
+            <div class="section-title">Suas <span>Videoaulas Gravadas</span></div>
+            <div class="section-subtitle">Módulos técnicos contratados para o seu desenvolvimento</div>
             
-            <div class="videos-privados-grid">
-                <!-- Aula de Exemplo 1 -->
-                <div class="video-aula-card">
-                    <video controls controlsList="nodownload" preload="metadata">
-                        <source src="aulas/modulo1_introducao.mp4" type="video/mp4">
+            <div class="aulas-grid">
+                <div class="aula-card">
+                    <video controls controlsList="nodownload">
+                        <source src="aulas/modulo1.mp4" type="video/mp4">
+                        O seu navegador não suporta a exibição deste vídeo.
                     </video>
-                    <h4>Módulo 01 - Análise de Papéis e Graduações</h4>
-                    <p>Duração: 45 minutos • Técnica de Esbatimento Fundamental</p>
+                    <h4>Módulo 01 - Análise e Textura de Papéis Artísticos</h4>
+                    <p>Duração: 42 minutos • Nível Técnico Inicial</p>
                 </div>
-                <!-- Aula de Exemplo 2 -->
-                <div class="video-aula-card">
-                    <video controls controlsList="nodownload" preload="metadata">
-                        <source src="aulas/modulo2_aquecimento.mp4" type="video/mp4">
+                
+                <div class="aula-card">
+                    <video controls controlsList="nodownload">
+                        <source src="aulas/modulo2.mp4" type="video/mp4">
                     </video>
-                    <h4>Módulo 02 - Práticas de Coordenação e Traço Pouco Marcado</h4>
-                    <p>Duração: 30 minutos • Controle de Pressão Manual</p>
+                    <h4>Módulo 02 - Coordenação e Controle de Pressão Artística</h4>
+                    <p>Duração: 35 minutes • Exercício Prático Controlado</p>
                 </div>
-                <!-- Aula de Exemplo 3 -->
-                <div class="video-aula-card">
-                    <video controls controlsList="nodownload" preload="metadata">
-                        <source src="aulas/modulo5_proporcoes.mp4" type="video/mp4">
+
+                <div class="aula-card">
+                    <video controls controlsList="nodownload">
+                        <source src="aulas/modulo5.mp4" type="video/mp4">
                     </video>
-                    <h4>Módulo 05 - Domínio de Grelha e Enquadramentos Críticos</h4>
-                    <p>Duração: 60 minutos • Alinhamento Anatômico dos Olhos</p>
+                    <h4>Módulo 05 - Alinhamento com a Grelha de Proporção</h4>
+                    <p>Duração: 55 minutos • Retratos Realistas Avançados</p>
                 </div>
             </div>
         </div>
-
     </div>
 
     <div id="sobre" class="section">
@@ -469,9 +475,10 @@
         &copy; 2026 Jasse Desenhos. Todos os direitos reservados.
     </footer>
 
-    <!-- INCLUSÃO DA INFRAESTRUTURA FIREBASE (MÓDULOS DE AUTENTICAÇÃO OFICIAIS) -->
+    <!-- INCLUSÃO DA INTERFACE E ENGINE DE SEGURANÇA DO FIREBASE COM AS SUAS COMPONENTES REAIS -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
         import { 
             getAuth, 
             createUserWithEmailAndPassword, 
@@ -480,114 +487,102 @@
             onAuthStateChanged 
         } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-        // CONFIGURAÇÃO DO SEU BANCO DE DADOS FIREBASE (Substitua pelos seus dados reais obtidos no painel do Firebase)
+        // Credenciais Oficiais extraídas do seu Painel do Firebase
         const firebaseConfig = {
-            apiKey: "SUA_API_KEY_AQUI",
-            authDomain: "SEU_PROJETO.firebaseapp.com",
-            projectId: "SEU_PROJETO",
-            storageBucket: "SEU_PROJETO.appspot.com",
-            messagingSenderId: "SEU_SENDER_ID",
-            appId: "SUA_APP_ID"
+            apiKey: "AIzaSyBYrVV_r-sCrf5HeC08nk3mhBqz-6Y8SuM",
+            authDomain: "jasse-desenhos.firebaseapp.com",
+            projectId: "jasse-desenhos",
+            storageBucket: "jasse-desenhos.firebasestorage.app",
+            messagingSenderId: "93412100858",
+            appId: "1:93412100858:web:36b7b3af063cb96e1c1743",
+            measurementId: "G-8D61LL4Z52"
         };
 
-        // Inicialização do Ecossistema
+        // Inicialização dos Serviços
         const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
         const auth = getAuth(app);
 
-        // Estado Logístico Interno
-        let modoRegistoAtivo = false;
+        let flagCriarConta = false;
 
-        // Alternador de Telas (Login / Registo)
-        window.alternarModoAuth = function(ativarRegisto) {
-            modoRegistoAtivo = activarRegisto;
-            const titulo = document.getElementById("auth-title");
-            const btnPrincipal = document.getElementById("btn-auth-principal");
-            const toggleWrapper = document.getElementById("auth-toggle-wrapper");
+        // Alternador visual para Mudar de Login para Registo e vice-versa
+        window.mudarModoInterface = function(modoRegistro) {
+            flagCriarConta = modoRegistro;
+            const titulo = document.getElementById("auth-titulo-painel");
+            const btnAcao = document.getElementById("btn-auth-acao");
+            const wrapperAlternar = document.getElementById("wrapper-alternar-modo");
 
-            if (modoRegistoAtivo) {
-                titulo.innerText = "Criar Conta de Aluno";
-                btnPrincipal.innerText = "Finalizar Registo";
-                toggleWrapper.innerHTML = 'Já possui conta ativa? <span onclick="alternarModoAuth(false)">Fazer Login</span>';
+            if (flagCriarConta) {
+                titulo.innerText = "Criar Registro de Aluno";
+                btnAcao.innerText = "Cadastrar e Aceder";
+                wrapperAlternar.innerHTML = 'Já possui conta de aluno? <span onclick="mudarModoInterface(false)">Fazer Login</span>';
             } else {
-                titulo.innerText = "Aceder à Área de Alunos";
-                btnPrincipal.innerText = "Entrar no Curso";
-                toggleWrapper.innerHTML = 'Não tem uma conta de acesso? <span onclick="alternarModoAuth(true)">Criar Registo</span>';
+                titulo.innerText = "Acesso do Aluno";
+                btnAcao.innerText = "Entrar no Painel";
+                wrapperAlternar.innerHTML = 'Não tem uma conta de acesso? <span onclick="mudarModoInterface(true)">Criar Novo Registro</span>';
             }
         };
 
-        // Executor das Operações (Login ou Cadastro no Banco de Dados)
-        window.executarAutenticacao = function() {
-            const email = document.getElementById("auth-email").value;
-            const password = document.getElementById("auth-password").value;
+        // Processador de Autenticação (Criar Conta ou Login)
+        window.gerenciarAutenticacao = function() {
+            const email = document.getElementById("input-email").value.trim();
+            const senha = document.getElementById("input-senha").value;
 
-            if (!email || !password) {
-                alert("Por favor, preencha todos os campos.");
+            if (!email || !senha) {
+                alert("Por favor, introduza o seu e-mail e a sua palavra-passe.");
                 return;
             }
 
-            if (modoRegistoAtivo) {
-                // Procedimento 1: Criar novo utilizador de forma segura
-                createUserWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => {
-                        alert("Registo concluído com sucesso! Bem-vindo à Jasse Desenhos.");
-                    })
-                    .catch((error) => {
-                        alert("Erro no registo: " + mapearErrosFirebase(error.code));
-                    });
+            if (flagCriarConta) {
+                createUserWithEmailAndPassword(auth, email, senha)
+                    .then(() => alert("Conta criada com sucesso! Aproveite as videoaulas."))
+                    .catch((err) => alert("Erro ao cadastrar: " + filtrarMensagemErro(err.code)));
             } else {
-                // Procedimento 2: Fazer login de aluno existente
-                signInWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => {
-                        alert("Acesso autorizado!");
-                    })
-                    .catch((error) => {
-                        alert("Erro de acesso: " + mapearErrosFirebase(error.code));
-                    });
+                signInWithEmailAndPassword(auth, email, senha)
+                    .then(() => alert("Acesso autorizado!"))
+                    .catch((err) => alert("Erro de acesso: " + filtrarMensagemErro(err.code)));
             }
         };
 
-        // Procedimento 3: Logout Completo
-        window.fazerLogout = function() {
-            signOut(auth).then(() => {
-                alert("Sessão terminada.");
-            });
+        // Função para Deslogar / Encerrar Sessão
+        window.encerrarSessao = function() {
+            signOut(auth).then(() => alert("Desconectado de forma segura."));
         };
 
-        // Observador em tempo real (Garante proteção absoluta se o utilizador não estiver logado)
+        // Escuta em Tempo Real as Mudanças de Estado do Utilizador
         onAuthStateChanged(auth, (user) => {
-            const blocoAuth = document.getElementById("auth-block");
-            const blocoAulas = document.getElementById("aulas-block");
-            const statusArea = document.getElementById("user-status-area");
+            const blocoLogin = document.getElementById("bloco-autenticacao");
+            const blocoVideos = document.getElementById("bloco-videoaulas");
+            const statusTopNav = document.getElementById("user-status-area");
 
             if (user) {
-                // Se logado: Esconde formulário de login e revela as videoaulas gravadas
-                blocoAuth.style.display = "none";
-                blocoAulas.style.display = "block";
-                statusArea.innerHTML = `
-                    <span class="user-logged-info"><i class="fa-solid fa-circle-user"></i> ${user.email}</span>
-                    <button class="auth-nav-btn" onclick="fazerLogout()">Sair</button>
+                // Caso esteja logado: Esconde formulário de login e mostra as aulas
+                blocoLogin.style.display = "none";
+                blocoVideos.style.display = "block";
+                statusTopNav.innerHTML = `
+                    <span class="user-email-display"><i class="fa-solid fa-user-check"></i> ${user.email}</span>
+                    <button class="btn-logout" onclick="encerrarSessao()">Sair</button>
                 `;
             } else {
-                // Se deslogado: Esconde as videoaulas e força a exibição do login
-                blocoAuth.style.display = "block";
-                blocoAulas.style.display = "none";
-                statusArea.innerHTML = "";
+                // Caso não esteja logado: Mostra tela de login e esconde as aulas
+                blocoLogin.style.display = "block";
+                blocoVideos.style.display = "none";
+                statusTopNav.innerHTML = "";
             }
         });
 
-        // Tradutor de erros para os seus alunos
-        function mapearErrosFirebase(codigo) {
+        // Tradutor de Códigos de Erro Nativos do Firebase
+        function filtrarMensagemErro(codigo) {
             switch(codigo) {
-                case 'auth/email-already-in-use': return "Este e-mail já está registado na nossa plataforma.";
-                case 'auth/weak-password': return "A palavra-passe deve possuir pelo menos 6 caracteres.";
-                case 'auth/invalid-credential': return "E-mail ou palavra-passe incorretos.";
-                case 'auth/invalid-email': return "O formato do e-mail introduzido é inválido.";
-                default: return "Ocorreu um erro desconhecido. Verifique a ligação.";
+                case 'auth/email-already-in-use': return "Este endereço de e-mail já está associado a outro aluno.";
+                case 'auth/weak-password': return "A palavra-passe deve conter pelo menos 6 caracteres.";
+                case 'auth/invalid-credential': return "Credenciais inválidas. Verifique o seu e-mail e palavra-passe.";
+                case 'auth/invalid-email': return "O formato do e-mail inserido não é válido.";
+                default: return "Ocorreu um erro inesperado na ligação com o servidor.";
             }
         }
     </script>
 
-    <!-- LOGÍSTICA JAVASCRIPT: Controla a exibição inteligente do formulário -->
     <script>
         function exibirFormulario() {
             var seccaoFormulario = document.getElementById("inscricao");
@@ -596,6 +591,7 @@
             if (!wrapper.innerHTML.trim()) {
                 wrapper.innerHTML = '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdrVdynkMPLoX__JAyK1aVXrvYCZIWAt3GfcfgsGi1-X_iDuQ/viewform?embedded=true" width="100%" height="3000" frameborder="0" marginheight="0" marginwidth="0">A carregar…</iframe>';
             }
+
             seccaoFormulario.style.display = "block";
             setTimeout(function() {
                 seccaoFormulario.scrollIntoView({ behavior: 'smooth', block: 'start' });
