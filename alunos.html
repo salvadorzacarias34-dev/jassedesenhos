@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área de Alunos - Jasse Desenhos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-principal: #0a0c10;
+            --bg-card: #131720;
+            --text-claro: #f3f4f6;
+            --text-mutado: #9ca3af;
+            --acento-azul: #00f3ff;
+            --acento-vermelho: #ff4a5a;
+            --acento-verde: #10b981;
+            --borda: #1e2530;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-principal); color: var(--text-claro); margin: 0; padding: 0; line-height: 1.6; }
+        
+        header { background-color: rgba(14, 17, 22, 0.95); backdrop-filter: blur(10px); padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--acento-azul); }
+        .logo { font-size: 22px; font-weight: 800; letter-spacing: 3px; color: var(--text-claro); text-decoration: none; }
+        .logo span { color: var(--acento-vermelho); }
+        
+        nav { display: flex; align-items: center; }
+        .btn-voltar { color: var(--text-mutado); text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; transition: color 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn-voltar:hover { color: var(--acento-azul); }
+
+        .auth-status-container { display: flex; align-items: center; margin-left: 25px; gap: 15px; }
+        .user-email-display { font-size: 12px; color: var(--acento-verde); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        .btn-logout { background: transparent; border: 1px solid var(--acento-vermelho); color: var(--acento-vermelho); padding: 5px 12px; font-size: 11px; text-transform: uppercase; font-weight: 700; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+        .btn-logout:hover { background: var(--acento-vermelho); color: #fff; }
+
+        .section { padding: 80px 50px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 34px; text-align: center; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
+        .section-title span { color: var(--acento-azul); }
+        .section-subtitle { text-align: center; color: var(--text-mutado); margin-bottom: 65px; font-size: 16px; }
+
+        /* Painel de Login Centralizado */
+        .auth-wrapper { max-width: 450px; margin: 60px auto; padding: 40px 30px; background-color: var(--bg-card); border: 1px solid var(--borda); border-radius: 8px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); text-align: center; }
+        .auth-wrapper h3 { margin-top: 0; font-size: 24px; color: var(--acento-azul); margin-bottom: 20px; }
+        .auth-group { margin-bottom: 20px; text-align: left; }
+        .auth-group label { display: block; font-size: 12px; color: var(--text-mutado); margin-bottom: 66px; font-weight: 600; text-transform: uppercase; margin-bottom: 6px; }
+        .auth-group input { width: 100%; padding: 12px 15px; background-color: #0a0c10; border: 1px solid var(--borda); border-radius: 4px; color: #fff; font-size: 15px; box-sizing: border-box; }
+        .auth-group input:focus { border-color: var(--acento-azul); outline: none; }
+        
+        .btn-entrar { background-color: var(--acento-vermelho); color: #ffffff; padding: 14px; width: 100%; font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; border: none; border-radius: 4px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(255, 74, 90, 0.3); }
+        .btn-entrar:hover { background-color: var(--acento-azul); color: var(--bg-principal); box-shadow: 0 8px 25px rgba(0, 243, 255, 0.4); }
+        
+        .auth-switch-text { margin-top: 25px; font-size: 13px; color: var(--text-mutado); line-height: 1.4; }
+
+        /* Grid de Vídeos Privados */
+        .aulas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
+        .aula-card { background-color: var(--bg-card); border: 1px solid var(--borda); border-radius: 6px; overflow: hidden; padding: 18px; transition: border-color 0.3s ease; }
+        .aula-card:hover { border-color: var(--acento-verde); }
+        .aula-card video { width: 100%; aspect-ratio: 16/9; background-color: #000; border-radius: 4px; margin-bottom: 15px; }
+        .aula-card h4 { margin: 0 0 5px 0; font-size: 17px; color: var(--text-claro); }
+        .aula-card p { margin: 0; font-size: 14px; color: var(--text-mutado); }
+        
+        footer { text-align: center; padding: 40px; font-size: 13px; color: #4b5563; border-top: 1px solid var(--borda); margin-top: 100px; }
+
+        @media (max-width: 768px) {
+            header { padding: 20px; flex-direction: column; gap: 15px; text-align: center; }
+            .section { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">JASSE<span>DESENHOS</span></a>
+        <nav>
+            <a href="index.html" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i> Voltar ao Site Principal</a>
+            <div id="user-status-area" class="auth-status-container"></div>
+        </nav>
+    </header>
+
+    <div class="section">
+        
+        <div id="bloco-autenticacao" class="auth-wrapper">
+            <h3>Portal do Aluno</h3>
+            <p style="color: var(--text-mutado); font-size: 14px; margin-bottom: 25px;">Introduza os seus dados de acesso fornecidos pelo professor.</p>
+            
+            <div class="auth-group">
+                <label>E-mail do Aluno</label>
+                <input type="email" id="input-email" placeholder="exemplo@dominio.com">
+            </div>
+            
+            <div class="auth-group">
+                <label>Palavra-passe</label>
+                <input type="password" id="input-senha" placeholder="Sua senha de acesso">
+            </div>
+            
+            <button class="btn-entrar" onclick="fazerLoginAluno()">Entrar na Plataforma</button>
+            
+            <p class="auth-switch-text">
+                <i class="fa-solid fa-lock" style="color: var(--acento-verde); margin-right: 5px;"></i> 
+                Acesso restrito a alunos ativos. A sua conta é gerada manualmente após a confirmação do pagamento via M-Pesa/e-Mola.
+            </p>
+        </div>
+
+        <div id="bloco-videoaulas" style="display: none;">
+            <div class="section-title">Suas <span>Videoaulas Gravadas</span></div>
+            <div class="section-subtitle">Módulos técnicos contratados para o seu desenvolvimento realista</div>
+            
+            <div class="aulas-grid">
+                <div class="aula-card">
+                    <video controls controlsList="nodownload">
+                        <source src="aulas/modulo1.mp4" type="video/mp4">
+                        O seu navegador não suporta a exibição deste vídeo.
+                    </video>
+                    <h4>Módulo 01 - Análise e Textura de Papéis Artísticos</h4>
+                    <p>Duração: 42 minutos • Nível Técnico Inicial</p>
+                </div>
+                
+                <div class="aula-card">
+                    <video controls controlsList="nodownload">
+                        <source src="aulas/modulo2.mp4" type="video/mp4">
+                    </video>
+                    <h4>Módulo 02 - Coordenação e Controle de Pressão Artística</h4>
+                    <p>Duração: 35 minutos • Exercício Prático Controlado</p>
+                </div>
+
+                <div class="aula-card">
+                    <video controls controlsList="nodownload">
+                        <source src="aulasmodulo5.mp4" type="video/mp4">
+                    </video>
+                    <h4>Módulo 05 - Alinhamento com a Grelha de Proporção</h4>
+                    <p>Duração: 55 minutos • Retratos Realistas Avançados</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Jasse Desenhos. Todos os direitos reservados.
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBYrVV_r-sCrf5HeC08nk3mhBqz-6Y8SuM",
+            authDomain: "jasse-desenhos.firebaseapp.com",
+            projectId: "jasse-desenhos",
+            storageBucket: "jasse-desenhos.firebasestorage.app",
+            messagingSenderId: "93412100858",
+            appId: "1:93412100858:web:36b7b3af063cb96e1c1743",
+            measurementId: "G-8D61LL4Z52"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Função de Login executada pelo Botão Vermelho
+        window.fazerLoginAluno = function() {
+            const email = document.getElementById("input-email").value.trim();
+            const senha = document.getElementById("input-senha").value;
+
+            if (!email || !senha) {
+                alert("Por favor, introduza o seu e-mail e palavra-passe.");
+                return;
+            }
+
+            signInWithEmailAndPassword(auth, email, senha)
+                .catch((err) => {
+                    if(err.code === 'auth/invalid-credential') {
+                        alert("Erro de acesso: Credenciais incorretas ou utilizador não registado pelo administrador.");
+                    } else {
+                        alert("Erro ao aceder: " + err.message);
+                    }
+                });
+        };
+
+        // Função para Deslogar com segurança
+        window.encerrarSessaoAluno = function() {
+            signOut(auth);
+        };
+
+        // Monitor do Estado do Aluno (Bloqueia ou Liberta o HTML na hora)
+        onAuthStateChanged(auth, (user) => {
+            const blocoLogin = document.getElementById("bloco-autenticacao");
+            const blocoVideos = document.getElementById("bloco-videoaulas");
+            const statusTopNav = document.getElementById("user-status-area");
+
+            if (user) {
+                blocoLogin.style.display = "none";
+                blocoVideos.style.display = "block";
+                statusTopNav.innerHTML = `
+                    <span class="user-email-display"><i class="fa-solid fa-graduation-cap"></i> Aluno: ${user.email}</span>
+                    <button class="btn-logout" onclick="encerrarSessaoAluno()">Sair do Portal</button>
+                `;
+            } else {
+                blocoLogin.style.display = "block";
+                blocoVideos.style.display = "none";
+                statusTopNav.innerHTML = "";
+            }
+        });
+    </script>
+</body>
+</html>
